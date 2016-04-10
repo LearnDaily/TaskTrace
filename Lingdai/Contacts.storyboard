@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Contact Table View Controller-->
+        <scene sceneID="kcq-9B-VMo">
+            <objects>
+                <tableViewController storyboardIdentifier="ContactTableViewController" id="Gzp-nU-sA2" customClass="ContactTableViewController" customModule="Lingdai" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="1bh-ib-7Q2">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.96125315656565657" green="0.96125315656565657" blue="0.96125315656565657" alpha="1" colorSpace="calibratedRGB"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="hUF-Fv-HRv">
+                            <rect key="frame" x="0.0" y="72" width="600" height="1"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="contactTableCellIdentifier" id="vqz-Kn-Ejv" customClass="ContactTableViewCell" customModule="Lingdai" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vqz-Kn-Ejv" id="jOh-S4-9Ng">
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="friend" translatesAutoresizingMaskIntoConstraints="NO" id="uW4-xG-Aaz" customClass="BaseImageView" customModule="Lingdai" customModuleProvider="target">
+                                            <rect key="frame" x="10" y="7" width="30" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="30" id="AHJ-tJ-4pB"/>
+                                                <constraint firstAttribute="height" constant="30" id="nBE-d3-w6r"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRound">
+                                                    <real key="value" value="4"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="通讯录好友" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5za-q5-Xap">
+                                            <rect key="frame" x="60" y="13" width="70" height="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="5za-q5-Xap" firstAttribute="centerY" secondItem="jOh-S4-9Ng" secondAttribute="centerY" id="0rP-pg-9eA"/>
+                                        <constraint firstItem="5za-q5-Xap" firstAttribute="leading" secondItem="uW4-xG-Aaz" secondAttribute="trailing" constant="20" id="Ulq-TA-2FS"/>
+                                        <constraint firstItem="uW4-xG-Aaz" firstAttribute="leading" secondItem="jOh-S4-9Ng" secondAttribute="leading" constant="10" id="jdu-rA-V5r"/>
+                                        <constraint firstItem="uW4-xG-Aaz" firstAttribute="centerY" secondItem="jOh-S4-9Ng" secondAttribute="centerY" id="rZD-G7-VGo"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="contentLabel" destination="5za-q5-Xap" id="Iho-2B-8j0"/>
+                                    <outlet property="iconImageView" destination="uW4-xG-Aaz" id="EZj-XS-8tX"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="Gzp-nU-sA2" id="D6r-7M-MvK"/>
+                            <outlet property="delegate" destination="Gzp-nU-sA2" id="eOt-tG-yJE"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sU9-J7-BK4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="158" y="223"/>
+        </scene>
+        <!--Invite Friedn View Controller-->
+        <scene sceneID="ehx-Cc-cXm">
+            <objects>
+                <viewController storyboardIdentifier="InviteFriednViewController" id="maw-ZW-cCl" customClass="InviteFriednViewController" customModule="Lingdai" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7OI-tO-hV6"/>
+                        <viewControllerLayoutGuide type="bottom" id="1fc-HI-Boy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fiW-as-PYW">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="输入朋友账号或手机号码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K3m-1K-V26">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.12549019610000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="GgF-lH-9lO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BUy-RV-Gaa" customClass="BaseButton" customModule="Lingdai" customModuleProvider="target">
+                                <rect key="frame" x="180" y="152" width="240" height="36"/>
+                                <color key="backgroundColor" red="0.12549019610000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="BUt-H5-qxe"/>
+                                    <constraint firstAttribute="width" constant="240" id="iYK-ns-qej"/>
+                                </constraints>
+                                <state key="normal" title="提交">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.12549019610000001" green="0.60392156860000001" blue="0.81568627449999997" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRound">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="K3m-1K-V26" firstAttribute="leading" secondItem="fiW-as-PYW" secondAttribute="leading" id="8od-3O-w8z"/>
+                            <constraint firstItem="BUy-RV-Gaa" firstAttribute="centerX" secondItem="fiW-as-PYW" secondAttribute="centerX" id="CEV-dw-OUp"/>
+                            <constraint firstItem="K3m-1K-V26" firstAttribute="top" secondItem="7OI-tO-hV6" secondAttribute="bottom" constant="44" id="T9f-BR-xfm"/>
+                            <constraint firstItem="BUy-RV-Gaa" firstAttribute="top" secondItem="K3m-1K-V26" secondAttribute="bottom" constant="44" id="rMy-R0-38O"/>
+                            <constraint firstAttribute="trailing" secondItem="K3m-1K-V26" secondAttribute="trailing" id="rNO-GQ-R0C"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PUB-TS-pBJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="774" y="223"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="friend" width="56" height="56"/>
+    </resources>
+</document>
