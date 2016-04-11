@@ -12,6 +12,7 @@ enum NAME_VALUE_CELL_TYPE:Int {
     case Base = -1
     case Participator = 0
     case ParentTask = 1
+    case Status = 2
 }
 
 

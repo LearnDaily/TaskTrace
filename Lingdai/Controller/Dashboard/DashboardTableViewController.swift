@@ -7,11 +7,21 @@
 //
 
 import UIKit
-
+import Alamofire
 class DashboardTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        Alamofire.request(.GET, "https://www.baidu.com") .responseString { response in
+            print("Response String: \(response.result.value)")
+            }
+            .responseJSON { response in
+                print("Response JSON: \(response.result.value)")
+        }
+
+       
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -22,6 +32,7 @@ class DashboardTableViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+         netTest()
         tabBarController?.tabBar.hidden = false
     }
 
@@ -30,6 +41,41 @@ class DashboardTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    
+    
+    func netTest(){
+//        
+//        Alamofire.request(Router.FetchTasks(lastId: "100000", count: 10)).responseJSON{
+//            closureResponse in
+//            
+//            if closureResponse.result.isFailure {
+//                
+//                print("net failed...")
+//                //self.notice("网络异常", type: NoticeType.error, autoClear: true)
+//                return
+//            }
+//            
+//            
+//            let json = closureResponse.result.value
+//            
+//            print(json)
+//            
+////            let result = JSON(json!)
+////            
+////            if result["isSuc"].boolValue {
+////                
+////                self.notice("评论成功!", type: NoticeType.success, autoClear: true)
+////                
+////                self.webView.stringByEvaluatingJavaScriptFromString("article.addComment("+result["result"].rawString()!+");")
+////                
+////                
+////                
+////            } else {
+////                
+////                self.notice("评论失败!", type: NoticeType.error, autoClear: true)
+////            }
+//        }
+    }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 0

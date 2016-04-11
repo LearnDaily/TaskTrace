@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		700F229F5D29CA47615AD26D /* Pods_Lingdai.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B819ED8C3398B875E0562B2B /* Pods_Lingdai.framework */; };
 		8A14269F1CA3AE84000FB040 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A14269E1CA3AE84000FB040 /* MainTabBarController.swift */; };
 		8A1426A21CA3C575000FB040 /* ProfileHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A1426A11CA3C575000FB040 /* ProfileHeader.xib */; };
 		8A1426A41CA3C922000FB040 /* PorfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1426A31CA3C922000FB040 /* PorfileHeaderView.swift */; };
@@ -20,6 +21,12 @@
 		8A314CDD1C9BF7C2001E6ABA /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A314CDC1C9BF7C2001E6ABA /* ContactTableViewCell.swift */; };
 		8A4191201CB102F200EED124 /* TelPhoneCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A41911F1CB102F200EED124 /* TelPhoneCodeViewController.swift */; };
 		8A4191271CB16C8000EED124 /* CommonTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4191261CB16C8000EED124 /* CommonTextFieldTableViewCell.swift */; };
+		8A7506AA1CBA911800B55560 /* TaskStatusTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7506A91CBA911800B55560 /* TaskStatusTableViewCell.swift */; };
+		8A7506B11CBA923600B55560 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7506AC1CBA923600B55560 /* Color+Extension.swift */; };
+		8A7506B41CBA923600B55560 /* UIImage + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7506AF1CBA923600B55560 /* UIImage + Extension.swift */; };
+		8A7506B51CBA923600B55560 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7506B01CBA923600B55560 /* UIView+Extension.swift */; };
+		8A7506B71CBA938400B55560 /* TaskStatusTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7506B61CBA938400B55560 /* TaskStatusTableViewController.swift */; };
+		8A7506C71CBB309800B55560 /* BaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7506C61CBB309800B55560 /* BaseTableView.swift */; };
 		8A792C361C9FE4ED00973293 /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A792C351C9FE4ED00973293 /* RootNavigationController.swift */; };
 		8A792C441C9FECA700973293 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A792C391C9FECA700973293 /* FMDatabase.m */; };
 		8A792C451C9FECA700973293 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A792C3B1C9FECA700973293 /* FMDatabaseAdditions.m */; };
@@ -39,6 +46,8 @@
 		8A812A941CBA566A00AB4DEF /* TreeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A812A921CBA566A00AB4DEF /* TreeNode.swift */; };
 		8A812A951CBA566A00AB4DEF /* TreeNodeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A812A931CBA566A00AB4DEF /* TreeNodeHelper.swift */; };
 		8A812A971CBA573800AB4DEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A812A961CBA573800AB4DEF /* Main.storyboard */; };
+		8A812A9D1CBA5F8600AB4DEF /* RequestApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A812A9C1CBA5F8600AB4DEF /* RequestApi.swift */; };
+		8A812A9F1CBA60F400AB4DEF /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A812A9E1CBA60F400AB4DEF /* Router.swift */; };
 		8A85CBC41CA14E9700F074A8 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A85CBC31CA14E9700F074A8 /* MessageUI.framework */; };
 		8A85CBC81CA26E8200F074A8 /* ReplyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A85CBC71CA26E8200F074A8 /* ReplyModel.swift */; };
 		8A85CBCB1CA2855200F074A8 /* DashboardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A85CBCA1CA2855200F074A8 /* DashboardTableViewController.swift */; };
@@ -118,6 +127,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		14627666DC5C3EF4A4C89269 /* Pods-Lingdai.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lingdai.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lingdai/Pods-Lingdai.debug.xcconfig"; sourceTree = "<group>"; };
 		8A14269E1CA3AE84000FB040 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		8A1426A11CA3C575000FB040 /* ProfileHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileHeader.xib; sourceTree = "<group>"; };
 		8A1426A31CA3C922000FB040 /* PorfileHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PorfileHeaderView.swift; sourceTree = "<group>"; };
@@ -131,6 +141,12 @@
 		8A314CDC1C9BF7C2001E6ABA /* ContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		8A41911F1CB102F200EED124 /* TelPhoneCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TelPhoneCodeViewController.swift; sourceTree = "<group>"; };
 		8A4191261CB16C8000EED124 /* CommonTextFieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonTextFieldTableViewCell.swift; sourceTree = "<group>"; };
+		8A7506A91CBA911800B55560 /* TaskStatusTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskStatusTableViewCell.swift; sourceTree = "<group>"; };
+		8A7506AC1CBA923600B55560 /* Color+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		8A7506AF1CBA923600B55560 /* UIImage + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage + Extension.swift"; sourceTree = "<group>"; };
+		8A7506B01CBA923600B55560 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		8A7506B61CBA938400B55560 /* TaskStatusTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskStatusTableViewController.swift; sourceTree = "<group>"; };
+		8A7506C61CBB309800B55560 /* BaseTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableView.swift; sourceTree = "<group>"; };
 		8A792C351C9FE4ED00973293 /* RootNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
 		8A792C381C9FECA700973293 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		8A792C391C9FECA700973293 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
@@ -156,6 +172,8 @@
 		8A812A921CBA566A00AB4DEF /* TreeNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreeNode.swift; sourceTree = "<group>"; };
 		8A812A931CBA566A00AB4DEF /* TreeNodeHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreeNodeHelper.swift; sourceTree = "<group>"; };
 		8A812A961CBA573800AB4DEF /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		8A812A9C1CBA5F8600AB4DEF /* RequestApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestApi.swift; sourceTree = "<group>"; };
+		8A812A9E1CBA60F400AB4DEF /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		8A85CBC31CA14E9700F074A8 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		8A85CBC71CA26E8200F074A8 /* ReplyModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplyModel.swift; sourceTree = "<group>"; };
 		8A85CBCA1CA2855200F074A8 /* DashboardTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardTableViewController.swift; sourceTree = "<group>"; };
@@ -243,6 +261,8 @@
 		8AFE533E1C9AA858006DC21D /* ALTextInputBarDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALTextInputBarDelegate.swift; sourceTree = "<group>"; };
 		8AFE533F1C9AA858006DC21D /* ALTextInputUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALTextInputUtilities.swift; sourceTree = "<group>"; };
 		8AFE53401C9AA858006DC21D /* ALTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALTextView.swift; sourceTree = "<group>"; };
+		B819ED8C3398B875E0562B2B /* Pods_Lingdai.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lingdai.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E11D6FE41A89FA0114042201 /* Pods-Lingdai.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lingdai.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lingdai/Pods-Lingdai.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +273,7 @@
 				8A85CBC41CA14E9700F074A8 /* MessageUI.framework in Frameworks */,
 				8A792C4E1C9FEDBD00973293 /* libsqlite3.tbd in Frameworks */,
 				8A314CDA1C9BF3FE001E6ABA /* ContactsUI.framework in Frameworks */,
+				700F229F5D29CA47615AD26D /* Pods_Lingdai.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +294,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2557EEF4F7C12C2131BE8875 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B819ED8C3398B875E0562B2B /* Pods_Lingdai.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		31A162F9A74597E6AE243F43 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				14627666DC5C3EF4A4C89269 /* Pods-Lingdai.debug.xcconfig */,
+				E11D6FE41A89FA0114042201 /* Pods-Lingdai.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		8A1426A01CA3C560000FB040 /* Person */ = {
 			isa = PBXGroup;
 			children = (
@@ -326,6 +364,16 @@
 			path = BaseViews;
 			sourceTree = "<group>";
 		};
+		8A7506AB1CBA923600B55560 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				8A7506AC1CBA923600B55560 /* Color+Extension.swift */,
+				8A7506AF1CBA923600B55560 /* UIImage + Extension.swift */,
+				8A7506B01CBA923600B55560 /* UIView+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		8A792C371C9FECA700973293 /* fmdb */ = {
 			isa = PBXGroup;
 			children = (
@@ -352,6 +400,15 @@
 				8A9BE0A31CAA75310095CDB2 /* ContactModel.swift */,
 			);
 			path = Contacts;
+			sourceTree = "<group>";
+		};
+		8A812A981CBA5EAA00AB4DEF /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				8A812A9C1CBA5F8600AB4DEF /* RequestApi.swift */,
+				8A812A9E1CBA60F400AB4DEF /* Router.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		8A85CBC91CA2852300F074A8 /* Dashboard */ = {
@@ -396,6 +453,7 @@
 				8AFE53371C9A8B41006DC21D /* ReplyTableViewCell.swift */,
 				8A85CBD41CA2D63000F074A8 /* MyTaskTableViewCell.swift */,
 				8A9BE0771CA90C530095CDB2 /* SimpleLabelTableViewCell.swift */,
+				8A7506A91CBA911800B55560 /* TaskStatusTableViewCell.swift */,
 			);
 			path = Task;
 			sourceTree = "<group>";
@@ -477,6 +535,7 @@
 				8A85CBCC1CA28E3300F074A8 /* TaskHomeTableViewController.swift */,
 				8A85CBCE1CA2934400F074A8 /* MyTaskTableViewController.swift */,
 				8A85CBD01CA294C500F074A8 /* MyRequestTaskTableViewController.swift */,
+				8A7506B61CBA938400B55560 /* TaskStatusTableViewController.swift */,
 			);
 			path = Task;
 			sourceTree = "<group>";
@@ -540,6 +599,8 @@
 				8AF29CB61C85C47D00944C9C /* LingdaiTests */,
 				8AF29CC11C85C47D00944C9C /* LingdaiUITests */,
 				8AF29CA01C85C47D00944C9C /* Products */,
+				31A162F9A74597E6AE243F43 /* Pods */,
+				2557EEF4F7C12C2131BE8875 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -556,6 +617,7 @@
 		8AF29CA11C85C47D00944C9C /* Lingdai */ = {
 			isa = PBXGroup;
 			children = (
+				8A812A981CBA5EAA00AB4DEF /* Service */,
 				8A8956BB1C95853500D5C2A4 /* Model */,
 				8AA6AF4F1C9460070028AED3 /* View */,
 				8AF29CD11C85C4CF00944C9C /* Controller */,
@@ -593,6 +655,7 @@
 		8AF29CD01C85C4B200944C9C /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				8A7506AB1CBA923600B55560 /* Extension */,
 				8A9BE07A1CAA4A550095CDB2 /* Categories */,
 				8A792C371C9FECA700973293 /* fmdb */,
 				8AFE533B1C9AA858006DC21D /* ALTextInputBar */,
@@ -613,6 +676,7 @@
 				8A314CD31C9BF0F4001E6ABA /* Contact */,
 				8AA6AF4C1C9458AE0028AED3 /* Task */,
 				8A792C351C9FE4ED00973293 /* RootNavigationController.swift */,
+				8A7506C61CBB309800B55560 /* BaseTableView.swift */,
 				8A85CBD21CA29A8F00F074A8 /* BaseTableViewController.swift */,
 				8A14269E1CA3AE84000FB040 /* MainTabBarController.swift */,
 			);
@@ -651,9 +715,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8AF29CC71C85C47D00944C9C /* Build configuration list for PBXNativeTarget "Lingdai" */;
 			buildPhases = (
+				945076617DBC65E1BF057F54 /* Check Pods Manifest.lock */,
 				8AF29C9B1C85C47D00944C9C /* Sources */,
 				8AF29C9C1C85C47D00944C9C /* Frameworks */,
 				8AF29C9D1C85C47D00944C9C /* Resources */,
+				13DA8DE1365D2C65BFC35C40 /* Embed Pods Frameworks */,
+				C7180154AE955FE50180DD92 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -773,11 +840,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		13DA8DE1365D2C65BFC35C40 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Lingdai/Pods-Lingdai-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		945076617DBC65E1BF057F54 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C7180154AE955FE50180DD92 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Lingdai/Pods-Lingdai-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8AF29C9B1C85C47D00944C9C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A812A9F1CBA60F400AB4DEF /* Router.swift in Sources */,
 				8AF29CA51C85C47D00944C9C /* ViewController.swift in Sources */,
 				8A792C451C9FECA700973293 /* FMDatabaseAdditions.m in Sources */,
 				8A792C471C9FECA700973293 /* FMDatabaseQueue.m in Sources */,
@@ -787,6 +903,7 @@
 				8A9BE09D1CAA5E6E0095CDB2 /* WelcomeViewController.swift in Sources */,
 				8AA6AF6E1C9474BB0028AED3 /* JTCalendar.m in Sources */,
 				8A812A951CBA566A00AB4DEF /* TreeNodeHelper.swift in Sources */,
+				8A7506B71CBA938400B55560 /* TaskStatusTableViewController.swift in Sources */,
 				8A8956C51C958C1400D5C2A4 /* EmployeeTableViewCell.swift in Sources */,
 				8AB1ECF91C9313B900A7D730 /* LoginTableViewController.swift in Sources */,
 				8A85CBCB1CA2855200F074A8 /* DashboardTableViewController.swift in Sources */,
@@ -795,13 +912,16 @@
 				8A812A911CBA564700AB4DEF /* TreeTableView.swift in Sources */,
 				8A9BE08E1CAA4A550095CDB2 /* UIImage+ImageBlur.m in Sources */,
 				8A85CBD31CA29A8F00F074A8 /* BaseTableViewController.swift in Sources */,
+				8A812A9D1CBA5F8600AB4DEF /* RequestApi.swift in Sources */,
 				8A792C4C1C9FED1900973293 /* ContactsDBManager.swift in Sources */,
 				8A792C481C9FECA700973293 /* FMDBHelper.swift in Sources */,
 				8AFE53431C9AA858006DC21D /* ALTextInputBarDelegate.swift in Sources */,
 				8AA6AF771C9474BB0028AED3 /* JTCircleView.m in Sources */,
+				8A7506AA1CBA911800B55560 /* TaskStatusTableViewCell.swift in Sources */,
 				8AFE53451C9AA858006DC21D /* ALTextView.swift in Sources */,
 				8A792C461C9FECA700973293 /* FMDatabasePool.m in Sources */,
 				8A1426A71CA3E374000FB040 /* TaskDBManager.swift in Sources */,
+				8A7506C71CBB309800B55560 /* BaseTableView.swift in Sources */,
 				8A85CBC81CA26E8200F074A8 /* ReplyModel.swift in Sources */,
 				8A4191271CB16C8000EED124 /* CommonTextFieldTableViewCell.swift in Sources */,
 				8A9BE0921CAA4A550095CDB2 /* UIView+RT.m in Sources */,
@@ -818,6 +938,7 @@
 				8A812A8B1CBA561100AB4DEF /* BaseView.swift in Sources */,
 				8AFE53421C9AA858006DC21D /* ALTextInputBar.swift in Sources */,
 				8A812A881CBA561100AB4DEF /* BaseButton.swift in Sources */,
+				8A7506B11CBA923600B55560 /* Color+Extension.swift in Sources */,
 				8A9BE0901CAA4A550095CDB2 /* UILabel+WLAttributedString.m in Sources */,
 				8A314CDD1C9BF7C2001E6ABA /* ContactTableViewCell.swift in Sources */,
 				8A812A8A1CBA561100AB4DEF /* BaseLabel.swift in Sources */,
@@ -839,6 +960,8 @@
 				8AA6AF751C9474BB0028AED3 /* JTCalendarMonthWeekDaysView.m in Sources */,
 				8AFE53361C9A8A6A006DC21D /* StringExtensions.swift in Sources */,
 				8A314CD51C9BF11A001E6ABA /* ContactTableViewController.swift in Sources */,
+				8A7506B41CBA923600B55560 /* UIImage + Extension.swift in Sources */,
+				8A7506B51CBA923600B55560 /* UIView+Extension.swift in Sources */,
 				8AFE53441C9AA858006DC21D /* ALTextInputUtilities.swift in Sources */,
 				8A85CBD11CA294C500F074A8 /* MyRequestTaskTableViewController.swift in Sources */,
 				8A8956D21C959FE900D5C2A4 /* UIAlertView+Block.m in Sources */,
@@ -940,7 +1063,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -978,7 +1101,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -987,11 +1110,12 @@
 		};
 		8AF29CC81C85C47D00944C9C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 14627666DC5C3EF4A4C89269 /* Pods-Lingdai.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Lingdai/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = www.zhongqihong.com.Lingdai;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1001,11 +1125,12 @@
 		};
 		8AF29CC91C85C47D00944C9C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E11D6FE41A89FA0114042201 /* Pods-Lingdai.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Lingdai/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = www.zhongqihong.com.Lingdai;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -28,9 +28,11 @@ class TaskDetailTableViewController: BaseTableViewController {
     
     var task:TaskModel = TaskModel()
     var subTask:TaskModel?
+    
     let SECTION_ID_SUBTASK = 2
     let SECTION_ID_FEED = 3
     let SECTION_ID_BASE = 1
+    let SECTION_TASK_STATUS = 4
     
 
     override func viewDidLoad() {
@@ -107,11 +109,11 @@ class TaskDetailTableViewController: BaseTableViewController {
             if let assignees = task.assignees{
                 
                 if assignees.count > 0{
-                      return 3
+                      return 4
                 }
               
             }
-            return 2
+            return 3
         }
         else if(section == SECTION_ID_SUBTASK){
             
@@ -302,13 +304,25 @@ class TaskDetailTableViewController: BaseTableViewController {
                 return cell
             }
             else if(indexPath.row == 2){
+                
                 let cell = tableView.dequeueReusableCellWithIdentifier("nameValueIdentifer", forIndexPath: indexPath) as! NameValueTableViewCell
                 
+                cell.configureCell("查看进度", value: "")
+                cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+                cell.setCellType(NAME_VALUE_CELL_TYPE.Status)
+                return cell
+                            }
+            else if(indexPath.row == 3){
+                
+                let cell = tableView.dequeueReusableCellWithIdentifier("nameValueIdentifer", forIndexPath: indexPath) as! NameValueTableViewCell
+                //
                 cell.configureCell("合作伙伴", value: task.assignees![0].name)
                 cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
                 cell.setCellType(NAME_VALUE_CELL_TYPE.Participator)
                 return cell
+
             }
+           
          
         }
         else if(indexPath.section == SECTION_ID_SUBTASK){
@@ -437,6 +451,9 @@ class TaskDetailTableViewController: BaseTableViewController {
             if cell.cellType == NAME_VALUE_CELL_TYPE.Participator
             {
                  performSegueWithIdentifier("toParticipator", sender: self)
+            }
+            else if cell.cellType == NAME_VALUE_CELL_TYPE.Status{
+                self.navigationController?.pushViewController(TaskStatusTableViewController(), animated: true)
             }
             
         }

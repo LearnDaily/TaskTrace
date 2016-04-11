@@ -20,10 +20,24 @@ class BaseTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        setBackBarButtonItem()
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func setBackBarButtonItem() {
+        let backBarButtonItem = UIBarButtonItem(image: UIImage(named: "back"), style: .Plain, target: self, action: #selector(BaseTableViewController.back))
+        navigationItem.leftBarButtonItem = backBarButtonItem
+    }
+    
+    func back() {
+        navigationController?.popViewControllerAnimated(true)
     }
 
     // MARK: - Table view data source
