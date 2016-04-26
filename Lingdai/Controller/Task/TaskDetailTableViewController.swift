@@ -16,7 +16,7 @@ func createNameValue(name:String,value:String) ->NameValueView{
     
 }
 
-let  defaultColor = UIColor(r: 32, g: 154, b: 208)
+let  defaultColor = UIColor(r: 100, g: 100, b: 100)
 
 typealias replyTo =  (text:String,to:String)->Void
 
@@ -38,7 +38,8 @@ class TaskDetailTableViewController: BaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBarController?.tabBar.hidden = true
-      
+        view.backgroundColor = UIColor(r: 239, g: 239, b: 239)
+        tableView.backgroundColor = UIColor(r: 239, g: 239, b: 239)
         //setupData()
     }
     
@@ -105,15 +106,15 @@ class TaskDetailTableViewController: BaseTableViewController {
             return 1
         }
         else if(section == SECTION_ID_BASE ){
-            
+            //项目进度 //合作伙伴
             if let assignees = task.assignees{
                 
                 if assignees.count > 0{
-                      return 4
+                      return 3
                 }
               
             }
-            return 3
+            return 2
         }
         else if(section == SECTION_ID_SUBTASK){
             
@@ -257,6 +258,7 @@ class TaskDetailTableViewController: BaseTableViewController {
     }
     
     
+    
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -271,48 +273,59 @@ class TaskDetailTableViewController: BaseTableViewController {
             
             return cell
         }
-        else if(indexPath.section == 1){
+        else if(indexPath.section == SECTION_ID_BASE){
             
             if(indexPath.row == 0){
-                var pTaskTitle = "根项目"
-                if !task.pId!.isEmpty && task.pId != NULL {
-                   
-                    
-                   let tempTask =  TreeNodeHelper.sharedInstance.findNodeById(rootTask, id: task.pId!)
-                    
-                    if tempTask == nil {
-                        pTaskTitle = task.pId!
-                    }
-                    else {
-                        pTaskTitle = (tempTask as! TaskModel).title
-                    }
-                }
+//                var pTaskTitle = "根项目"
+//                if !task.pId!.isEmpty && task.pId != NULL {
+//                   
+//                    
+//                   let tempTask =  TreeNodeHelper.sharedInstance.findNodeById(rootTask, id: task.pId!)
+//                    
+//                    if tempTask == nil {
+//                        pTaskTitle = task.pId!
+//                    }
+//                    else {
+//                        pTaskTitle = (tempTask as! TaskModel).title
+//                    }
+//                }
+//                
+//                let cell = tableView.dequeueReusableCellWithIdentifier("nameValueIdentifer", forIndexPath: indexPath) as! NameValueTableViewCell
+//                
+//
+//                
+//                cell.configureCell("属于项目", value: pTaskTitle)
+//
+//                return cell
                 
-                let cell = tableView.dequeueReusableCellWithIdentifier("nameValueIdentifer", forIndexPath: indexPath) as! NameValueTableViewCell
+                var model = TaskBriefModel()
+                model.deadline = "2016-10-20"
+                model.parentTask = "Root"
+                model.title = "do do do"
+                var cell = TaskBriefTableViewCell.getTaskBriefTableViewCell(tableView)
                 
-
+                cell.setData(model)
                 
-                cell.configureCell("属于项目", value: pTaskTitle)
-
                 return cell
             }
+//            else if(indexPath.row == 1){
+//                let cell = tableView.dequeueReusableCellWithIdentifier("nameValueIdentifer", forIndexPath: indexPath) as! NameValueTableViewCell
+//                
+//                cell.configureCell("截止时间", value: task.deadline)
+//                
+//                return cell
+//            }
             else if(indexPath.row == 1){
-                let cell = tableView.dequeueReusableCellWithIdentifier("nameValueIdentifer", forIndexPath: indexPath) as! NameValueTableViewCell
-                
-                cell.configureCell("截止时间", value: task.deadline)
-                
-                return cell
-            }
-            else if(indexPath.row == 2){
                 
                 let cell = tableView.dequeueReusableCellWithIdentifier("nameValueIdentifer", forIndexPath: indexPath) as! NameValueTableViewCell
                 
                 cell.configureCell("查看进度", value: "")
                 cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
                 cell.setCellType(NAME_VALUE_CELL_TYPE.Status)
+                cell.setLightColor()
                 return cell
                             }
-            else if(indexPath.row == 3){
+            else if(indexPath.row == 2){
                 
                 let cell = tableView.dequeueReusableCellWithIdentifier("nameValueIdentifer", forIndexPath: indexPath) as! NameValueTableViewCell
                 //
@@ -414,6 +427,9 @@ class TaskDetailTableViewController: BaseTableViewController {
             }
             return 180
         }
+        else if(indexPath.section == SECTION_ID_BASE && indexPath.row == 0 ){
+            return 88
+        }
     
         
         return 44
@@ -486,29 +502,7 @@ class TaskDetailTableViewController: BaseTableViewController {
         }
         
     }
-    
-    func configureInputBar() {
-        let rightButton = UIButton(frame: CGRectMake(0, 0, 44, 44))
-        rightButton.setTitle("发表", forState: UIControlState.Normal)
-        rightButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
-        rightButton.addTarget(self, action: Selector("sendComment:"), forControlEvents: UIControlEvents.TouchUpInside)
-        keyboardObserver.userInteractionEnabled = false
-        textInputBar.showTextViewBorder = true
-        textInputBar.rightView = rightButton
-        textInputBar.textView.placeholder = "请输入说说!"
-        // textInputBar.frame = CGRectMake(0, SCREEN_HEIGHT - textInputBar.defaultHeight - 50, SCREEN_WIDTH, textInputBar.defaultHeight)
-        textInputBar.frame = CGRectMake(0, SCREEN_HEIGHT - textInputBar.defaultHeight - 50, SCREEN_WIDTH, textInputBar.defaultHeight)
-        textInputBar.backgroundColor = UIColor(white: 0.95, alpha: 1)
-        textInputBar.keyboardObserver = keyboardObserver
-        view.addSubview(textInputBar)
-        
-        //textInputBar.becomeFirstResponder()
-        
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardFrameChanged:", name: ALKeyboardFrameDidChangeNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
-    }
+   
    
 
 }
@@ -603,6 +597,29 @@ extension TaskDetailTableViewController {
     
     func reply(text:String,to:String){
         configureInputBar()
+    }
+    
+    func configureInputBar() {
+        let rightButton = UIButton(frame: CGRectMake(0, 0, 44, 44))
+        rightButton.setTitle("发表", forState: UIControlState.Normal)
+        rightButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
+        rightButton.addTarget(self, action: Selector("sendComment:"), forControlEvents: UIControlEvents.TouchUpInside)
+        keyboardObserver.userInteractionEnabled = false
+        textInputBar.showTextViewBorder = true
+        textInputBar.rightView = rightButton
+        textInputBar.textView.placeholder = "请输入说说!"
+        // textInputBar.frame = CGRectMake(0, SCREEN_HEIGHT - textInputBar.defaultHeight - 50, SCREEN_WIDTH, textInputBar.defaultHeight)
+        textInputBar.frame = CGRectMake(0, SCREEN_HEIGHT - textInputBar.defaultHeight - 50, SCREEN_WIDTH, textInputBar.defaultHeight)
+        textInputBar.backgroundColor = UIColor(white: 0.95, alpha: 1)
+        textInputBar.keyboardObserver = keyboardObserver
+        view.addSubview(textInputBar)
+        
+        //textInputBar.becomeFirstResponder()
+        
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardFrameChanged:", name: ALKeyboardFrameDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
     }
 }
 

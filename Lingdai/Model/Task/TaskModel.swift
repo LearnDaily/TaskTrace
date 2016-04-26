@@ -11,9 +11,9 @@ import UIKit
 class TaskModel: TreeNode {
     
     var title:String!
-    var founder:String!
+    var userId:String!
     var deadline:String!
-    var startTime:String!
+    var postTime:String!
     var assignees:[EmployeeModel]!
   //  var subTasks:[TaskModel]?
     var reply:[ReplyModel]?
@@ -25,17 +25,48 @@ class TaskModel: TreeNode {
         let now:NSDate! = NSDate()
         deadline = NSDateFormatter.defaultDateFormatter().stringFromDate(now)
         // .dateFormatterWithFormat.stringFromDate(NSDate())
-        startTime = deadline
+        postTime = "\(NSDate())"
         assignees = [EmployeeModel]()
         reply = [ReplyModel]()
         self.id = "\(NSDate().timeIntervalSince1970)"
         print("id: \(id)")
     }
     
+    
+    
     convenience  init() {
         self.init(desc: "", id: "", pId: "", name: "")
         
  
+    }
+    
+    func getJson()->[String:AnyObject]{
+        
+        var parameter:[String:AnyObject] = [String:AnyObject]()
+        parameter["title"] = self.title
+        parameter["deadline"] = self.deadline
+        if let parentTask = self.parent{
+            parameter["parentTask"] = parentTask
+        }
+        else{
+            parameter["parentTask"] = "Root"
+        }
+        
+        parameter["postTime"] = self.postTime
+        parameter["userId"] = UserModel.userAccount
+        if self.assignees != nil{
+            var assigneeIds = [String]()
+            for assignee in assignees {
+                assigneeIds.append(assignee.id)
+                print("id:\(assignee.id)")
+            }
+            parameter["assignees"] = assigneeIds
+        }
+        
+        return parameter
+        
+        
+        
     }
     
     func addSubTask(task:TaskModel){

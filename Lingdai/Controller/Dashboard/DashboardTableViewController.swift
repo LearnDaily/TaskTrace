@@ -14,21 +14,10 @@ class DashboardTableViewController: UITableViewController {
         super.viewDidLoad()
         
         
-        Alamofire.request(.GET, "https://www.baidu.com") .responseString { response in
-            print("Response String: \(response.result.value)")
-            }
-            .responseJSON { response in
-                print("Response JSON: \(response.result.value)")
-        }
 
-       
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    
+    
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)

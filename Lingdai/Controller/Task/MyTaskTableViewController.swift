@@ -7,56 +7,66 @@
 //
 
 import UIKit
+import Alamofire
+
 var rootTask = [TaskModel]()
 class MyTaskTableViewController: BaseTableViewController {
     
-    
-   
-    
-  //  var allTasks:[TaskModel] = [TaskModel]()
+    var isLoading = false
     var taskManager = TaskDBManager.sharedInstance
     var reloadTaskIfNeed = true
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        
-//        var uuid = NSUUID().UUIDString
-//        print(uuid)
 
-//      
-//        TaskDBManager.bindAndFireTaskListener("MyTaskTableViewController") { (taskId) -> Void in
-//            self.loadData()
-//            
-//            print("MyTaskTableViewController reloadData")
-//        }
-//        
-        
-        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "taskChanged:", name: TaskDBManager.Notification.TaskChanged, object: nil)
         
     }
     
+   
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         if reloadTaskIfNeed == true {
-            loadData()
+            loadData(0,size: 20)
         }
     }
   
    
-    func loadData(){
+    func loadData(start:Int,size:Int){
        
         weak var weakSelf = self
-        taskManager.findAll { (tasks) -> Void in
-//            rootTask.clearSubTasks()
-//            for task in tasks {
-//                rootTask.addSubTask(task)
-//            }
-            rootTask = tasks
-            weakSelf?.tableView.reloadData()
-            weakSelf?.reloadTaskIfNeed = false
+//        taskManager.findAll { (tasks) -> Void in
+//            rootTask = tasks
+//            weakSelf?.tableView.reloadData()
+//            weakSelf?.reloadTaskIfNeed = false
+//        }
+        
+        if isLoading == true{
+            return
+        }
+        isLoading = true
+        Alamofire.request(Router.GetTasks(start: start, size: size)) .responseJSON { response in
+           
+            weakSelf?.isLoading = false
+            print("response \(response.result.value)")
+            
+            if response.result.isFailure {
+                
+            }
+            
+            let value = JSON(response.result.value!).dictionaryValue
+            
+            var responseData = ServiceParser.parseRequestData(value)
+            
+            if responseData.response == RESPONSE_ERROR{
+                return
+            }
+            
+            
+            
+        
         }
     }
     
@@ -99,17 +109,20 @@ class MyTaskTableViewController: BaseTableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        let vc = TaskDetailTableViewController.instance
-        vc.task = rootTask[indexPath.row]
-        self.navigationController?.pushViewController(vc, animated: true)
+      //  let vc = TaskDetailTableViewController.instance
+      //  vc.task = rootTask[indexPath.row]
+      //  self.navigationController?.pushViewController(vc, animated: true)
         
-        //performSegueWithIdentifier("MyTaskTableViewController", sender: nil)
+        let vc = TaskDetailViewController()
+        vc.task =  rootTask[indexPath.row]
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell:NameValueTableViewCell  = tableView.dequeueReusableCellWithIdentifier("nameValueIdentifer", forIndexPath: indexPath) as!NameValueTableViewCell
-        
+//        let cell:NameValueTableViewCell  = tableView.dequeueReusableCellWithIdentifier("nameValueIdentifer", forIndexPath: indexPath) as!NameValueTableViewCell
+       
+        let cell = NameValueTableViewCell.getNameValueCell(tableView)
         let task = rootTask[indexPath.row]
         if(task.assignees.count > 1){
              cell.configureCell((task.assignees.first?.name)! + "等", value:task.title)

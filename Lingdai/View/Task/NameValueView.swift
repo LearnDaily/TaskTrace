@@ -10,25 +10,29 @@ import UIKit
 
 class NameValueView: UIView {
     
+
     @IBOutlet weak var nameLabel: UILabel!
     
-    
-    
     @IBOutlet weak var valueLabel: UILabel!
-
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
-    }
-    */
-    
     func setNameValue(name:String,value:String){
-        
+//        
         nameLabel.text = name
         valueLabel.text = value
     }
+    
+    func setTextColor(nameColor:UIColor, valueColor:UIColor){
+        nameLabel.textColor = nameColor
+        valueLabel.textColor = valueColor
+    }
+    
+    func setNameColor(color:UIColor){
+        nameLabel.textColor = color
+    }
+    
+    func setValueColor(color:UIColor){
+        valueLabel.textColor = color
+    }
+    
     
     
     

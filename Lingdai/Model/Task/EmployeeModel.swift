@@ -17,18 +17,20 @@ enum EmployeeType:Int {
 class EmployeeModel: NSObject {
 
     public var type:EmployeeType = .Individual
-    
+    //系统编号
     var id:String!
     //工号
-    var number:String = "1234"
-    
+    var number:String = ""
+    //名称
     var name:String = "Jone"
-    
+    //电话号码
     var phoneNumber:String = "null"
     
     override init() {
         super.init()
-        id = "\(NSDate().timeIntervalSince1970)"
+        id =  "\(NSDate().timeIntervalSince1970)"
+        phoneNumber = id
+         number = id
         
     }
     
@@ -76,9 +78,19 @@ class EmployeeModel: NSObject {
 //        phoneNumbers?.append(phoneNumber)
     }
     
+    func getJson() ->[String:AnyObject]{
+        var parameter = [String:AnyObject]()
+        parameter["id"] = self.id
+        parameter["name"] = self.name
+        parameter["number"] = self.number
+        parameter["phoneNumber"] = self.number
+        return parameter
+    }
+
+    
     func isEqual(compareTo employee:EmployeeModel) -> Bool {
-        
-        if employee.id == self.id || employee.phoneNumber == self.phoneNumber {
+        //如果编号或者电话号码或者工号相等，我们认为是同一个人
+        if employee.id == self.id || employee.phoneNumber == self.phoneNumber || employee.number == self.number {
             return true
         }
         else{

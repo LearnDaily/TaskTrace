@@ -11,51 +11,51 @@ import UIKit
 
 
 class MainTabBarController: UITabBarController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.tabBar.tintColor = defaultColor
         setItemsImage()
         
-        if KeychainWrapper.stringForKey(USER_ACCOUNT) == nil {
-            KeychainWrapper.setString("88888888", forKey: USER_ACCOUNT)
-            var me = ContactModel(id: KeychainWrapper.stringForKey(USER_ACCOUNT)!)
-            ContactsDBManager.instance.addContacts([me])
-        }
-      
+        //if KeychainWrapper.stringForKey(USER_ACCOUNT) == nil {
+            // KeychainWrapper.setString("88888888", forKey: USER_ACCOUNT)
+            // var me = ContactModel(id: KeychainWrapper.stringForKey(USER_ACCOUNT)!)
+            // ContactsDBManager.instance.addContacts([me])
+        //}
+        
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("goLogin:"), name: GO_TO_LOGIN, object: nil)
         
-        print("xxxxxx")
+        
     }
     
     
     func goLogin(sender:AnyObject){
         
         //if User.sharedInstance.token == nil{
-            let nvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("WelcomeViewController") as!
+        let nvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("WelcomeViewController") as!
         RootNavigationController
         
-            let welcomeVC = nvc.viewControllers.first as! WelcomeViewController
-//            
-//            loginVC.initSignInCallBack({ (success) -> Void in
-//                if success {
-//                    if let index = notification.object as? Int {
-//                        self.selectedIndex =  index
-//                    }
-//                }
-//            })
+        let welcomeVC = nvc.viewControllers.first as! WelcomeViewController
+        //
+        //            loginVC.initSignInCallBack({ (success) -> Void in
+        //                if success {
+        //                    if let index = notification.object as? Int {
+        //                        self.selectedIndex =  index
+        //                    }
+        //                }
+        //            })
         
-            presentViewController(nvc, animated: true, completion: { () -> Void in
-                self.selectedIndex = 0
-            })
-      //  }
-
+        presentViewController(nvc, animated: true, completion: { () -> Void in
+            self.selectedIndex = 0
+        })
+        //  }
+        
         
         
     }
-
+    
     
     
     override func didReceiveMemoryWarning() {
@@ -71,16 +71,16 @@ class MainTabBarController: UITabBarController {
             count++
         }
     }
-
-  
+    
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

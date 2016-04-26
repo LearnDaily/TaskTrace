@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Alamofire
 protocol DeriveSubTask {
     func deriveSubTask(task:TaskModel)
 }
@@ -16,6 +16,7 @@ public enum TaskOperator:Int{
     case Create = 1
     case Divide = 2
 }
+
 class DecomposeTaskTableViewController: UITableViewController {
     var taskOperator:TaskOperator = .Divide
     var task:TaskModel?
@@ -25,8 +26,11 @@ class DecomposeTaskTableViewController: UITableViewController {
     @IBOutlet weak var deadlineLabel: UILabel!
     @IBOutlet weak var assigneeLabel: UILabel!
     @IBOutlet weak var titleLabel: UITextField!
+    var isLoading = false
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       
         
         if taskOperator == .Create {
             self.title = "创建新任务"
@@ -48,8 +52,8 @@ class DecomposeTaskTableViewController: UITableViewController {
         
         tabBarController?.tabBar.hidden = true
         
-        if UserModel.userAccount == NULL || UserModel.userPassword == NULL {
-            NSNotificationCenter.defaultCenter().postNotificationName(GO_TO_LOGIN, object: 1)
+        if UserModel.isLogin == false {
+            return
         }
 
     }
@@ -77,19 +81,45 @@ class DecomposeTaskTableViewController: UITableViewController {
             task!.title = titleLabel.text
             task!.pId = parentTaskId
             delegate?.deriveSubTask(task!)
-            taskManager.addTask(task!, callback: { (taskId) -> Void in
-               //TaskDBManager.taskChanged(taskId)
+            var parameters = [String:AnyObject]()
+            parameters["TASK_OPERATION"] = "ADD_TASK"
+            parameters["task"] = task!.getJson()
+
+            weak var weakSelf = self
+            if isLoading == true {
+                return
+            }
+            
+            print("parameters:\(parameters)")
+            isLoading = true
+            Alamofire.request(Router.AddTask(parameters)) .responseJSON { response in
                 
-                 NSNotificationCenter.defaultCenter().postNotificationName(TaskDBManager.Notification.TaskChanged, object: taskId)
-            })
+                weakSelf?.isLoading = false
+                print("response \(response.result.value)")
+                
+                if response.result.isFailure {
+                }
+                
+                weakSelf?.isLoading = false
+                
+                NSNotificationCenter.defaultCenter().postNotificationName(TaskDBManager.Notification.TaskChanged, object: weakSelf?.task?.id)
+            }
+            
+            tabBarController?.tabBar.hidden = false
+            self.navigationController?.popViewControllerAnimated(true)
+            
+//            taskManager.addTask(task!, callback: { (taskId) -> Void in
+//               //TaskDBManager.taskChanged(taskId)
+//                
+//                 NSNotificationCenter.defaultCenter().postNotificationName(TaskDBManager.Notification.TaskChanged, object: taskId)
+//            })
             
             
         }
         
       
         
-        tabBarController?.tabBar.hidden = false
-        self.navigationController?.popViewControllerAnimated(true)
+       
         
     }
     
@@ -147,7 +177,10 @@ extension DecomposeTaskTableViewController:AssignTask,DeadlineSetting{
                 for assignee in newAssignees {
 
                     task!.assignees.append(assignee)
+                    print("assignee:\(assignee.id)")
                 }
+                
+                
             }
 
         }

@@ -12,11 +12,11 @@ enum Router :URLRequestConvertible{
 
   
     
-    case Login
-    case AddTask
-    case AddSubTask
-    case FetchTasks(lastId:String,count:Int)
-    
+    case Login(account:String,password:String)
+    case Signup([String: AnyObject])
+    case AddTask([String:AnyObject])
+    case GetTasks(start:Int,size:Int)
+    case addContacts([String:AnyObject])
 
     static var token: String?
     
@@ -24,9 +24,15 @@ enum Router :URLRequestConvertible{
     var method: Alamofire.Method {
         switch self {
         case .Login:
-            return .POST
-        case .FetchTasks:
             return .GET
+        case .GetTasks:
+            return .GET
+        case .Signup:
+            return .POST
+        case .AddTask:
+            return .POST
+        case .addContacts:
+            return .POST
         default:
             return .GET
         }
@@ -36,8 +42,16 @@ enum Router :URLRequestConvertible{
 //    
     var path: String {
         switch self {
-            case .FetchTasks(let lastId,let count):
-                return RequestApi.getTasks(lastId, count: count)
+            case .GetTasks(let start,let size):
+                return RequestApi.getTasks(start, size: size)
+            case .Login(let account,let password):
+                return RequestApi.login(account,password: password)
+            case .Signup(_):
+            return RequestApi.signup()
+        case .AddTask(_):
+            return RequestApi.addTask()
+        case .addContacts(_):
+            return RequestApi.addContacts()
         default:
             return ""
         }
@@ -53,23 +67,27 @@ enum Router :URLRequestConvertible{
         
         print("mutableURLRequest \(mutableURLRequest)")
         
-        return mutableURLRequest
+       
         
-//        if let token = Router.token {
-//            mutableURLRequest.setValue("\(token)", forHTTPHeaderField: "token")
-//        }
-//        
-//        mutableURLRequest.setValue("com.swiftmi.app", forHTTPHeaderField: "clientid")
-//        mutableURLRequest.setValue("1.0", forHTTPHeaderField: "appversion")
+        if let token = Router.token {
+            mutableURLRequest.setValue("\(token)", forHTTPHeaderField: "token")
+        }
+//
+        mutableURLRequest.setValue("com.swiftmi.app", forHTTPHeaderField: "clientid")
+        mutableURLRequest.setValue("1.0", forHTTPHeaderField: "appversion")
         
-//        switch self {
-////        case .FetchTasks(let lastId,let count):
-////            return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: parameters).0
-////       
-//            
-//        default:
-//            return mutableURLRequest
-//        }
+        switch self {
+            
+        case .Signup(let parameters):
+             return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: parameters).0
+        case .AddTask(let parameters):
+                return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: parameters).0
+        case .addContacts(let parameters):
+                return  Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: parameters).0
+
+        default:
+            return mutableURLRequest
+        }
     }
 
 }

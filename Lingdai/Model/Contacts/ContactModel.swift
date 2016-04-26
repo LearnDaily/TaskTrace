@@ -32,7 +32,8 @@ class ContactModel: EmployeeModel {
         self.name = "自己"
 
     }
-
+    
+    
     
 
     required init(coder aDecoder: NSCoder) {

@@ -18,16 +18,21 @@ enum NAME_VALUE_CELL_TYPE:Int {
 
 class NameValueTableViewCell: UITableViewCell {
     
+    var nameValueView:NameValueView!
     
     var CELL_TYPE:NAME_VALUE_CELL_TYPE = .Base
     
-    @IBOutlet weak var nameLabel: UILabel!
-
-    @IBOutlet weak var valueLabel: UILabel!
+ 
     
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        nameValueView =   UINib(nibName: "NameValueView", bundle: nil).instantiateWithOwner(nil, options: nil)[0] as! NameValueView
+        
+        nameValueView.frame = CGRectMake(0, 0, self.width, 44)
+        
+        self.contentView.addSubview(nameValueView)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -49,16 +54,22 @@ class NameValueTableViewCell: UITableViewCell {
     }
     
     func configureCell(name:String?,value:String?){
-        self.nameLabel.text = name
-        self.valueLabel.text = value
+        nameValueView.setNameValue(name!, value: value!)
+       
+    }
+    
+    func setLightColor(){
+      
+        
+        nameValueView.setTextColor(themeTextColor, valueColor: themeTextColor)
     }
     
     func setColors(nameColor:UIColor?,valueColor:UIColor?){
         if(nameColor != nil){
-            nameLabel.textColor = nameColor
+            nameValueView.setNameColor(nameColor!)
         }
         if(valueColor != nil){
-            valueLabel.textColor = valueColor!
+            nameValueView.setValueColor(valueColor!)
         }
         
     }
@@ -72,13 +83,23 @@ class NameValueTableViewCell: UITableViewCell {
             return CELL_TYPE
         }
     }
-    
+//    
     func setNameColor(){
-        nameLabel.textColor = defaultColor
+       nameValueView.setNameColor(defaultColor)
     }
     
     func setNameRed(){
-        nameLabel.textColor = UIColor.redColor()
+        nameValueView.setValueColor(UIColor.redColor())
     }
     
+    static var identifier = "NameValueTableViewCell"
+    
+    class func getNameValueCell(tableView:UITableView) ->NameValueTableViewCell{
+        var cell = tableView.dequeueReusableCellWithIdentifier(identifier) as? NameValueTableViewCell
+        if cell == nil {
+            cell = NameValueTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: identifier)
+        }
+        
+        return cell!
+    }
 }

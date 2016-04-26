@@ -40,7 +40,7 @@ class EmployeeTableViewController: UITableViewController {
             assignees = [EmployeeModel]()
         }
         
-        setupData()
+   
         
         loadEmployees()
         
@@ -112,25 +112,7 @@ class EmployeeTableViewController: UITableViewController {
     
 
     
-    func setupData(){
-        
-//        if(interactionEnable == false){
-//            for assignee in assignees{
-//                 employees.append(assignee)
-//            }
-//          
-//
-//        }
-//        else{
-//            employees.append(EmployeeModel(number: "111", name: "黎明"))
-//            employees.append(EmployeeModel(number: "222", name: "张学友"))
-//            employees.append(EmployeeModel(number: "333", name: "刘德华"))
-//            employees.append(EmployeeModel(number: "333", name: "王菲"))
-//        }
-        
-       
-   
-    }
+
     
     @IBAction func addEmployees(sender: AnyObject) {
         
@@ -154,10 +136,7 @@ class EmployeeTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        if interactionEnable == false
-        {
-            return
-        }
+       
         
         var cell = tableView.cellForRowAtIndexPath(indexPath) as! EmployeeTableViewCell
         
@@ -165,7 +144,7 @@ class EmployeeTableViewController: UITableViewController {
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
             var exists = false
             for assignee in assignees {
-                if assignee.number == cell.employee.number {
+                if assignee.isEqual(compareTo: cell.employee) {
                     
                     exists = true
                     break;
@@ -219,12 +198,18 @@ class EmployeeTableViewController: UITableViewController {
 
         print("employee: \(employees[indexPath.row].name)")
         cell.configureCell(employees[indexPath.row])
-       // cell.selectionStyle = UITableViewCellSelectionStyle.None
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
         
         for assignee in assignees {
-            if assignee.number == employees[indexPath.row].number {
+            if( assignee.isEqual(compareTo:employees[indexPath.row]))
+            {
                 cell.isChecked = true
                 cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+                break;
+            }
+            else{
+                cell.isChecked = false
+                cell.accessoryType = UITableViewCellAccessoryType.None
                 break;
             }
         }
@@ -247,7 +232,7 @@ extension EmployeeTableViewController:ContactDectector{
                 print("assignee: \(employee.name)")
             }
             interactionEnable = true
-            setupData()
+           
             updateUI()
             self.tableView.reloadData()
         }

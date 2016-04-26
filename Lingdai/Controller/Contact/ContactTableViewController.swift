@@ -10,7 +10,7 @@ import UIKit
 //import Contacts
 import ContactsUI
 import MessageUI
-
+import Alamofire
 protocol ContactDectector{
     func onAdd(contacts:[EmployeeModel]?)
 }
@@ -25,7 +25,7 @@ class ContactTableViewController: UITableViewController,CNContactPickerDelegate,
     var delegate:ContactDectector?
     var keys = [String]()
     var sortedContacts = [String:[ContactModel]]()
-    
+    var isLoading = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +62,45 @@ class ContactTableViewController: UITableViewController,CNContactPickerDelegate,
         }
         
         self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    
+    func addFriends(sender:AnyObject){
+    
+        weak var weakSelf = self
+        var contacts = [[String:AnyObject]]();
+        for contact in newContacts {
+            var para:[String:AnyObject] = [String:AnyObject]()
+            para["contact"] = contact.getJson()
+            contacts.append(para)
+        }
+        
+        var parameter = [String:AnyObject]()
+        parameter["contacts"] = contacts
+        
+        if isLoading == true{
+            return
+        }
+        else{
+            isLoading = true
+        }
+        
+        Alamofire.request(Router.addContacts(parameter)) .responseJSON { response in
+            
+            weakSelf?.isLoading = false
+            print("response \(response.result.value)")
+      
+            if response.result.isFailure {
+                
+                
+                let alert = UIAlertView(title: "提醒", message: "网络异常，请检查网络", delegate: nil, cancelButtonTitle: "确定")
+                alert.show()
+                
+                return
+            }
+        }
+        
+        
     }
     
     func setupContacts(){

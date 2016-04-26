@@ -47,18 +47,18 @@ class UserModel: ContactModel {
         }
     }
     
-    class func setAccount(account:String) ->Bool{
+    class func setAccount(account:String?) ->Bool{
         if account == NULL {
             return false
         }
-        return KeychainWrapper.setString(account, forKey: USER_ACCOUNT)
+        return KeychainWrapper.setString(account!, forKey: USER_ACCOUNT)
     }
     
-    class func setPassword(password:String) ->Bool{
+    class func setPassword(password:String?) ->Bool{
         if password == NULL {
             return false
         }
-        return KeychainWrapper.setString(password, forKey: USER_PASSWORD)
+        return KeychainWrapper.setString(password!, forKey: USER_PASSWORD)
     }
     
     class func saveUser(){
@@ -66,9 +66,18 @@ class UserModel: ContactModel {
         setPassword(visitorPassword)
     }
     
-    class func setUserAsVisitor(account:String,password:String){
-        visitorAccount = account
-        visitorPassword = password
+    class func setUserAsVisitor(account:String?,password:String?){
+        if let acc = account{
+             visitorAccount = acc
+        }
+        else{
+            return
+        }
+        
+        if let psw = password{
+            visitorPassword = psw
+        }
+        
     }
     
 
@@ -83,6 +92,16 @@ class UserModel: ContactModel {
             Static.instance = UserModel()
         }
         return Static.instance!
+    }
+    class var isLogin:Bool{
+        get{
+            if UserModel.userAccount == NULL || UserModel.userPassword == NULL {
+                NSNotificationCenter.defaultCenter().postNotificationName(GO_TO_LOGIN, object: 1)
+                
+                return false
+            }
+            return true
+        }
     }
     
 

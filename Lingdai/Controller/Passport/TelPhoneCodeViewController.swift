@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Alamofire
 class TelPhoneCodeViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var code1Label: UILabel!
 
@@ -19,6 +19,7 @@ class TelPhoneCodeViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var code4Label: UILabel!
     
     var tempText = ""
+    var isLoading = false
     override func viewDidLoad() {
         super.viewDidLoad()
         var fakeTF = UITextField(frame: CGRectMake(0,0,0,0))
@@ -49,9 +50,79 @@ class TelPhoneCodeViewController: UIViewController,UITextFieldDelegate {
     
     func submit(sender:AnyObject){
         
+        if isLoading == true{
+            return
+        }
         if tempText == "1024" {
-            UserModel.saveUser()
-             self.dismissViewControllerAnimated(true, completion:nil )
+            
+            
+            var account = UserModel.visitorAccount
+            var password = UserModel.visitorPassword
+            
+            if !account.isNull() && !password.isNull() {
+                
+                
+                //
+                
+                
+                var parameters = [String:AnyObject]()
+                parameters["account"] = account
+                parameters["password"] = password
+                weak var weakSelf = self
+                
+                isLoading = true
+                Alamofire.request(Router.Signup(parameters))
+                    .responseJSON { response in
+                        
+                        weakSelf?.isLoading = false
+                        if response.result.isFailure {
+                            let alert = UIAlertView(title: "提醒", message: "网络异常，请检查网络设置", delegate: nil, cancelButtonTitle: "确定")
+                            alert.show()
+                            return
+                        }
+                        
+                        print("Response JSON: \(response.result.value)")
+                        
+                        let json = response.result.value
+                        
+                        let value = JSON(json!).dictionaryValue
+                        
+                        
+                        if isDataError(value) == true{
+                            return ;
+                        }
+                        else{
+                            
+                            var result = value["result"]!.dictionaryValue
+                            var state = result["state"]?.boolValue
+                            var code = result["code"]?.intValue
+                            var text = result["text"]?.stringValue
+                            var data = result["data"]?.dictionaryValue
+                            
+                            print("state: \(state),code:\(code),text:\(text),data:\(data)")
+                            
+                            if(code == 1){
+                                
+                                UserModel.saveUser()
+                                
+                              
+                                let alert = UIAlertView(title: "提醒", message: "注册成功", delegate: nil, cancelButtonTitle: "确定")
+                                alert.show()
+                                
+                                self.dismissViewControllerAnimated(true, completion:nil )
+                                
+                                
+                            }
+                            else{
+                                let alert = UIAlertView(title: "提醒", message: "该用户已经存在", delegate: nil, cancelButtonTitle: "确定")
+                                alert.show()
+                            }
+                        }
+                        
+                }
+            }
+                
+
         }
         else {
             var alert = UIAlertView(title: "提示", message: "请输入正确的验证码", delegate: nil, cancelButtonTitle: "确定")
