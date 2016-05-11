@@ -31,14 +31,10 @@ class NewContactTableViewCell: UITableViewCell {
         }
     }
     
-    var isStrange:Bool!{
+    var isStrange:Bool = true{
         didSet{
-            if isStrange == true {
-                inviteBtn.hidden = false
-            }
-            else{
-                inviteBtn.hidden = true
-            }
+            contactModel.isStrange = isStrange
+            layoutIfNeeded()
         }
     }
     
@@ -56,6 +52,17 @@ class NewContactTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if contactModel.isStrange == true {
+            inviteBtn.hidden = false
+        }
+        else{
+            inviteBtn.hidden = true
+        }
+        
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
