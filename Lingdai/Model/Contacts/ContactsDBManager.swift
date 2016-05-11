@@ -41,7 +41,7 @@ class ContactsDBManager: NSObject {
        
     }
     
-    func findAll(cb:(employees:[EmployeeModel])->Void){
+    func findAll(cb:(employees:[ContactModel])->Void){
         
          contactsDatabase.queryEmployees( callback: cb )
     }
@@ -78,7 +78,7 @@ class ContactsDBManager: NSObject {
                     let sql = "insert into \(self.className)('employeeId','employeeName','employeeNumber','phoneNumber') values (?,?,?,?)"
                     db.executeUpdate(sql, withArgumentsInArray: [employee.id,employee.name,employee.number,employee.phoneNumber
                         ])
-                      print("insert employeeId:\(employee.id) name: \(employee.name)")
+                      print("insert employeeId:\(employee.id) name: \(employee.name) phone:\(employee.phoneNumber)")
                     
                 })
                 
@@ -108,11 +108,11 @@ class ContactsDBManager: NSObject {
             }
         }
         
-        func queryEmployees(page:Int=0,num:Int=20,employeeIds:[String]=[],callback:([EmployeeModel])->Void?){
+        func queryEmployees(page:Int=0,num:Int=20,employeeIds:[String]=[],callback:([ContactModel])->Void?){
             autoreleasepool { () -> () in
              databaseQueue.inDatabase({ (db) -> Void in
                 var rs:FMResultSet!
-                var employees = [EmployeeModel]()
+                var employees = [ContactModel]()
                 var sql:String  = "select * from \(self.className)"
                     if(employeeIds.count>0){
                         var idString = ""
@@ -133,7 +133,7 @@ class ContactsDBManager: NSObject {
                     rs = db.executeQuery(sql, withArgumentsInArray: [])
                 //
                     while(rs.next()){
-                        let employee = EmployeeModel()
+                        let employee = ContactModel()
                         employee.id = rs.stringForColumn("employeeId")
                         if(rs.stringForColumn("employeeName") != nil){
                             employee.name = rs.stringForColumn("employeeName")

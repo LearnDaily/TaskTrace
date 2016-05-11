@@ -38,6 +38,11 @@ class LoginTableViewController: UITableViewController {
     }()
     
     
+    @IBAction func tapAction(sender: AnyObject) {
+        accountTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        
+    }
     @IBAction func submitTapped(sender: AnyObject) {
         
         account = accountTextField.text

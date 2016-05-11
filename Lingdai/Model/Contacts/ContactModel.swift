@@ -10,7 +10,9 @@ import UIKit
 
 class ContactModel: EmployeeModel {
 
-    
+    var avatarUrl:String!
+    //是否新朋友
+    var isStrange = true
     
     override init() {
         super.init()

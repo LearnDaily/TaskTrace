@@ -8,6 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		700F229F5D29CA47615AD26D /* Pods_Lingdai.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B819ED8C3398B875E0562B2B /* Pods_Lingdai.framework */; };
+		8A03C2331CDB0E4500ADDDDA /* SubscribedUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A03C2321CDB0E4500ADDDDA /* SubscribedUserTableViewCell.swift */; };
+		8A03C2351CDB2EA000ADDDDA /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A03C2341CDB2EA000ADDDDA /* PlaceholderTextView.swift */; };
+		8A03C2391CDB359800ADDDDA /* PublishStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A03C2381CDB359800ADDDDA /* PublishStatusViewController.swift */; };
+		8A03C23B1CDB42AE00ADDDDA /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A03C23A1CDB42AE00ADDDDA /* UIBarButtonItem+Extension.swift */; };
+		8A03C23D1CDB432D00ADDDDA /* ProgressHUDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A03C23C1CDB432D00ADDDDA /* ProgressHUDManager.swift */; };
+		8A03C2471CDB43D100ADDDDA /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8A03C23F1CDB43D100ADDDDA /* LICENSE.txt */; };
+		8A03C2481CDB43D100ADDDDA /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 8A03C2401CDB43D100ADDDDA /* README.md */; };
+		8A03C2491CDB43D100ADDDDA /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A03C2431CDB43D100ADDDDA /* SVIndefiniteAnimatedView.m */; };
+		8A03C24A1CDB43D100ADDDDA /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8A03C2441CDB43D100ADDDDA /* SVProgressHUD.bundle */; };
+		8A03C24B1CDB43D100ADDDDA /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A03C2461CDB43D100ADDDDA /* SVProgressHUD.m */; };
 		8A14269F1CA3AE84000FB040 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A14269E1CA3AE84000FB040 /* MainTabBarController.swift */; };
 		8A1426A21CA3C575000FB040 /* ProfileHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A1426A11CA3C575000FB040 /* ProfileHeader.xib */; };
 		8A1426A41CA3C922000FB040 /* PorfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1426A31CA3C922000FB040 /* PorfileHeaderView.swift */; };
@@ -24,6 +34,8 @@
 		8A314CDD1C9BF7C2001E6ABA /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A314CDC1C9BF7C2001E6ABA /* ContactTableViewCell.swift */; };
 		8A4191201CB102F200EED124 /* TelPhoneCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A41911F1CB102F200EED124 /* TelPhoneCodeViewController.swift */; };
 		8A4191271CB16C8000EED124 /* CommonTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4191261CB16C8000EED124 /* CommonTextFieldTableViewCell.swift */; };
+		8A4FC8FA1CDC6BFB00C3788C /* addressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4FC8F91CDC6BFB00C3788C /* addressBook.m */; };
+		8A4FC8FC1CDC74C200C3788C /* NewContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4FC8FB1CDC74C200C3788C /* NewContactTableViewCell.swift */; };
 		8A52F7B21CC2766300FAE867 /* SwiftNotice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A52F7B11CC2766300FAE867 /* SwiftNotice.swift */; };
 		8A52F7B41CC2772800FAE867 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A52F7B31CC2772800FAE867 /* SwiftyJSON.swift */; };
 		8A7506AA1CBA911800B55560 /* TaskStatusTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7506A91CBA911800B55560 /* TaskStatusTableViewCell.swift */; };
@@ -103,6 +115,7 @@
 		8ACB96C51CC1FBFD005B3BB3 /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB96C41CC1FBFD005B3BB3 /* TaskDetailViewController.swift */; };
 		8ACB96C71CC20396005B3BB3 /* NameValueView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ACB96C61CC20396005B3BB3 /* NameValueView.xib */; };
 		8AD44D7C1CB1757A007E2F12 /* SignupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD44D7B1CB1757A007E2F12 /* SignupTableViewController.swift */; };
+		8ADD1E881CD35FC500556853 /* LDHorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD1E871CD35FC500556853 /* LDHorizontalScrollView.swift */; };
 		8AF29CA31C85C47D00944C9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF29CA21C85C47D00944C9C /* AppDelegate.swift */; };
 		8AF29CA51C85C47D00944C9C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF29CA41C85C47D00944C9C /* ViewController.swift */; };
 		8AF29CAA1C85C47D00944C9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AF29CA91C85C47D00944C9C /* Assets.xcassets */; };
@@ -137,6 +150,18 @@
 
 /* Begin PBXFileReference section */
 		14627666DC5C3EF4A4C89269 /* Pods-Lingdai.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lingdai.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lingdai/Pods-Lingdai.debug.xcconfig"; sourceTree = "<group>"; };
+		8A03C2321CDB0E4500ADDDDA /* SubscribedUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscribedUserTableViewCell.swift; sourceTree = "<group>"; };
+		8A03C2341CDB2EA000ADDDDA /* PlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
+		8A03C2381CDB359800ADDDDA /* PublishStatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublishStatusViewController.swift; sourceTree = "<group>"; };
+		8A03C23A1CDB42AE00ADDDDA /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
+		8A03C23C1CDB432D00ADDDDA /* ProgressHUDManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressHUDManager.swift; sourceTree = "<group>"; };
+		8A03C23F1CDB43D100ADDDDA /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		8A03C2401CDB43D100ADDDDA /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		8A03C2421CDB43D100ADDDDA /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
+		8A03C2431CDB43D100ADDDDA /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
+		8A03C2441CDB43D100ADDDDA /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		8A03C2451CDB43D100ADDDDA /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		8A03C2461CDB43D100ADDDDA /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		8A14269E1CA3AE84000FB040 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		8A1426A11CA3C575000FB040 /* ProfileHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileHeader.xib; sourceTree = "<group>"; };
 		8A1426A31CA3C922000FB040 /* PorfileHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PorfileHeaderView.swift; sourceTree = "<group>"; };
@@ -153,6 +178,9 @@
 		8A314CDC1C9BF7C2001E6ABA /* ContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		8A41911F1CB102F200EED124 /* TelPhoneCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TelPhoneCodeViewController.swift; sourceTree = "<group>"; };
 		8A4191261CB16C8000EED124 /* CommonTextFieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonTextFieldTableViewCell.swift; sourceTree = "<group>"; };
+		8A4FC8F81CDC6BFB00C3788C /* addressBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addressBook.h; sourceTree = "<group>"; };
+		8A4FC8F91CDC6BFB00C3788C /* addressBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addressBook.m; sourceTree = "<group>"; };
+		8A4FC8FB1CDC74C200C3788C /* NewContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewContactTableViewCell.swift; sourceTree = "<group>"; };
 		8A52F7B11CC2766300FAE867 /* SwiftNotice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftNotice.swift; sourceTree = "<group>"; };
 		8A52F7B31CC2772800FAE867 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		8A7506A91CBA911800B55560 /* TaskStatusTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskStatusTableViewCell.swift; sourceTree = "<group>"; };
@@ -260,6 +288,7 @@
 		8ACB96C41CC1FBFD005B3BB3 /* TaskDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
 		8ACB96C61CC20396005B3BB3 /* NameValueView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NameValueView.xib; sourceTree = "<group>"; };
 		8AD44D7B1CB1757A007E2F12 /* SignupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupTableViewController.swift; sourceTree = "<group>"; };
+		8ADD1E871CD35FC500556853 /* LDHorizontalScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDHorizontalScrollView.swift; sourceTree = "<group>"; };
 		8AF29C9F1C85C47D00944C9C /* Lingdai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lingdai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AF29CA21C85C47D00944C9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8AF29CA41C85C47D00944C9C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -329,6 +358,28 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		8A03C23E1CDB43D100ADDDDA /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				8A03C23F1CDB43D100ADDDDA /* LICENSE.txt */,
+				8A03C2401CDB43D100ADDDDA /* README.md */,
+				8A03C2411CDB43D100ADDDDA /* SVProgressHUD */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		8A03C2411CDB43D100ADDDDA /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				8A03C2421CDB43D100ADDDDA /* SVIndefiniteAnimatedView.h */,
+				8A03C2431CDB43D100ADDDDA /* SVIndefiniteAnimatedView.m */,
+				8A03C2441CDB43D100ADDDDA /* SVProgressHUD.bundle */,
+				8A03C2451CDB43D100ADDDDA /* SVProgressHUD.h */,
+				8A03C2461CDB43D100ADDDDA /* SVProgressHUD.m */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
 		8A1426A01CA3C560000FB040 /* Person */ = {
 			isa = PBXGroup;
 			children = (
@@ -359,6 +410,7 @@
 			isa = PBXGroup;
 			children = (
 				8A314CDC1C9BF7C2001E6ABA /* ContactTableViewCell.swift */,
+				8A4FC8FB1CDC74C200C3788C /* NewContactTableViewCell.swift */,
 			);
 			path = Contact;
 			sourceTree = "<group>";
@@ -380,6 +432,15 @@
 				8A4191261CB16C8000EED124 /* CommonTextFieldTableViewCell.swift */,
 			);
 			path = BaseViews;
+			sourceTree = "<group>";
+		};
+		8A4FC8F71CDC6BC600C3788C /* AddressBook */ = {
+			isa = PBXGroup;
+			children = (
+				8A4FC8F81CDC6BFB00C3788C /* addressBook.h */,
+				8A4FC8F91CDC6BFB00C3788C /* addressBook.m */,
+			);
+			path = AddressBook;
 			sourceTree = "<group>";
 		};
 		8A7506AB1CBA923600B55560 /* Extension */ = {
@@ -469,6 +530,7 @@
 				8A2F3E671CBE4B44008CA6CE /* TaskBriefTableViewCellView.swift */,
 				8A2F3E711CBE9225008CA6CE /* TaskBriefTableViewCell.swift */,
 				8ACB96C61CC20396005B3BB3 /* NameValueView.xib */,
+				8A03C2321CDB0E4500ADDDDA /* SubscribedUserTableViewCell.swift */,
 			);
 			path = Task;
 			sourceTree = "<group>";
@@ -525,6 +587,8 @@
 		8A9BE0991CAA595D0095CDB2 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				8A03C23C1CDB432D00ADDDDA /* ProgressHUDManager.swift */,
+				8A03C2341CDB2EA000ADDDDA /* PlaceholderTextView.swift */,
 				8A2BEAD21CACF249001C027E /* KeychainWrapper.swift */,
 				8A9BE09A1CAA59A70095CDB2 /* LingdaiConstants.swift */,
 			);
@@ -562,6 +626,7 @@
 				8A85CBD01CA294C500F074A8 /* MyRequestTaskTableViewController.swift */,
 				8A7506B61CBA938400B55560 /* TaskStatusTableViewController.swift */,
 				8ACB96C41CC1FBFD005B3BB3 /* TaskDetailViewController.swift */,
+				8A03C2381CDB359800ADDDDA /* PublishStatusViewController.swift */,
 			);
 			path = Task;
 			sourceTree = "<group>";
@@ -613,6 +678,14 @@
 				8AB1ECF51C9311A600A7D730 /* AMTumblrHud.m */,
 			);
 			path = AMTumblrHud;
+			sourceTree = "<group>";
+		};
+		8ADD1E861CD35FC500556853 /* LDHorizontalScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				8ADD1E871CD35FC500556853 /* LDHorizontalScrollView.swift */,
+			);
+			path = LDHorizontalScrollView;
 			sourceTree = "<group>";
 		};
 		8AF29C961C85C47D00944C9C = {
@@ -681,6 +754,9 @@
 		8AF29CD01C85C4B200944C9C /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				8A4FC8F71CDC6BC600C3788C /* AddressBook */,
+				8A03C23E1CDB43D100ADDDDA /* SVProgressHUD */,
+				8ADD1E861CD35FC500556853 /* LDHorizontalScrollView */,
 				8A52F7B31CC2772800FAE867 /* SwiftyJSON.swift */,
 				8A7506AB1CBA923600B55560 /* Extension */,
 				8A9BE07A1CAA4A550095CDB2 /* Categories */,
@@ -713,6 +789,7 @@
 		8AF29CD21C85C57600944C9C /* ExtensionViews */ = {
 			isa = PBXGroup;
 			children = (
+				8A03C23A1CDB42AE00ADDDDA /* UIBarButtonItem+Extension.swift */,
 				8A812A841CBA561100AB4DEF /* BaseButton.swift */,
 				8A812A851CBA561100AB4DEF /* BaseImageView.swift */,
 				8A812A861CBA561100AB4DEF /* BaseLabel.swift */,
@@ -845,7 +922,9 @@
 				8A812A971CBA573800AB4DEF /* Main.storyboard in Resources */,
 				8A812A901CBA564700AB4DEF /* TreeNodeTableViewCell.xib in Resources */,
 				8AF29CAD1C85C47D00944C9C /* LaunchScreen.storyboard in Resources */,
+				8A03C2471CDB43D100ADDDDA /* LICENSE.txt in Resources */,
 				8ACB96C71CC20396005B3BB3 /* NameValueView.xib in Resources */,
+				8A03C24A1CDB43D100ADDDDA /* SVProgressHUD.bundle in Resources */,
 				8A7507031CBBAF1300B55560 /* TaskBriefTableViewCell.xib in Resources */,
 				8AF29CAA1C85C47D00944C9C /* Assets.xcassets in Resources */,
 				8A1426A21CA3C575000FB040 /* ProfileHeader.xib in Resources */,
@@ -931,6 +1010,7 @@
 				8A95C58F1CC4CC610054A2FC /* RequestApi.swift in Sources */,
 				8AA6AF6F1C9474BB0028AED3 /* JTCalendarAppearance.m in Sources */,
 				8A314CD01C9BED72001E6ABA /* TeamModel.swift in Sources */,
+				8A03C24B1CDB43D100ADDDDA /* SVProgressHUD.m in Sources */,
 				8A9BE09D1CAA5E6E0095CDB2 /* WelcomeViewController.swift in Sources */,
 				8AA6AF6E1C9474BB0028AED3 /* JTCalendar.m in Sources */,
 				8A812A951CBA566A00AB4DEF /* TreeNodeHelper.swift in Sources */,
@@ -945,11 +1025,14 @@
 				8A85CBD31CA29A8F00F074A8 /* BaseTableViewController.swift in Sources */,
 				8A792C4C1C9FED1900973293 /* ContactsDBManager.swift in Sources */,
 				8A792C481C9FECA700973293 /* FMDBHelper.swift in Sources */,
+				8A03C23D1CDB432D00ADDDDA /* ProgressHUDManager.swift in Sources */,
 				8A2F3E681CBE4B44008CA6CE /* TaskBriefTableViewCellView.swift in Sources */,
 				8AFE53431C9AA858006DC21D /* ALTextInputBarDelegate.swift in Sources */,
 				8AA6AF771C9474BB0028AED3 /* JTCircleView.m in Sources */,
 				8A7506AA1CBA911800B55560 /* TaskStatusTableViewCell.swift in Sources */,
+				8A03C2351CDB2EA000ADDDDA /* PlaceholderTextView.swift in Sources */,
 				8AFE53451C9AA858006DC21D /* ALTextView.swift in Sources */,
+				8A4FC8FC1CDC74C200C3788C /* NewContactTableViewCell.swift in Sources */,
 				8A792C461C9FECA700973293 /* FMDatabasePool.m in Sources */,
 				8A1426A71CA3E374000FB040 /* TaskDBManager.swift in Sources */,
 				8A7506C71CBB309800B55560 /* BaseTableView.swift in Sources */,
@@ -962,6 +1045,7 @@
 				8AA6AF701C9474BB0028AED3 /* JTCalendarContentView.m in Sources */,
 				8AA6AF741C9474BB0028AED3 /* JTCalendarMonthView.m in Sources */,
 				8A8956D01C959FE900D5C2A4 /* NSDate+TCUtils.m in Sources */,
+				8A03C2491CDB43D100ADDDDA /* SVIndefiniteAnimatedView.m in Sources */,
 				8ABD7BDE1C96EFF5008E98ED /* NameValueTableViewCell.swift in Sources */,
 				8AB1ECF61C9311A600A7D730 /* AMTumblrHud.m in Sources */,
 				8A8956D51C95A39500D5C2A4 /* TaskModel.swift in Sources */,
@@ -973,6 +1057,7 @@
 				8A812A881CBA561100AB4DEF /* BaseButton.swift in Sources */,
 				8A7506B11CBA923600B55560 /* Color+Extension.swift in Sources */,
 				8A9BE0901CAA4A550095CDB2 /* UILabel+WLAttributedString.m in Sources */,
+				8A03C23B1CDB42AE00ADDDDA /* UIBarButtonItem+Extension.swift in Sources */,
 				8A314CDD1C9BF7C2001E6ABA /* ContactTableViewCell.swift in Sources */,
 				8A52F7B41CC2772800FAE867 /* SwiftyJSON.swift in Sources */,
 				8A812A8A1CBA561100AB4DEF /* BaseLabel.swift in Sources */,
@@ -997,6 +1082,7 @@
 				8A7506B41CBA923600B55560 /* UIImage + Extension.swift in Sources */,
 				8A7506B51CBA923600B55560 /* UIView+Extension.swift in Sources */,
 				8AFE53441C9AA858006DC21D /* ALTextInputUtilities.swift in Sources */,
+				8A03C2391CDB359800ADDDDA /* PublishStatusViewController.swift in Sources */,
 				8A2F3E6A1CBE4C08008CA6CE /* TaskBriefModel.swift in Sources */,
 				8A85CBD11CA294C500F074A8 /* MyRequestTaskTableViewController.swift in Sources */,
 				8A8956D21C959FE900D5C2A4 /* UIAlertView+Block.m in Sources */,
@@ -1005,14 +1091,18 @@
 				8A792C361C9FE4ED00973293 /* RootNavigationController.swift in Sources */,
 				8AA6AF791C9475500028AED3 /* DeadLineCalendarViewController.swift in Sources */,
 				8AA6AF731C9474BB0028AED3 /* JTCalendarMenuView.m in Sources */,
+				8A4FC8FA1CDC6BFB00C3788C /* addressBook.m in Sources */,
 				8AA6AF551C946F640028AED3 /* EmployeeTableViewController.swift in Sources */,
 				8A85CBCF1CA2934400F074A8 /* MyTaskTableViewController.swift in Sources */,
 				8AA6AF571C9473180028AED3 /* DecomposeTaskTableViewController.swift in Sources */,
 				8A9BE08C1CAA4A550095CDB2 /* NSString+RT.m in Sources */,
+				8A03C2331CDB0E4500ADDDDA /* SubscribedUserTableViewCell.swift in Sources */,
 				8A812A941CBA566A00AB4DEF /* TreeNode.swift in Sources */,
 				8AA6AF531C9466540028AED3 /* UIColorExtensions.swift in Sources */,
 				8A9BE0911CAA4A550095CDB2 /* UIView+AddBorder.m in Sources */,
 				8A85CBD71CA2E3D000F074A8 /* InviteFriednViewController.swift in Sources */,
+				8A03C2481CDB43D100ADDDDA /* README.md in Sources */,
+				8ADD1E881CD35FC500556853 /* LDHorizontalScrollView.swift in Sources */,
 				8A14269F1CA3AE84000FB040 /* MainTabBarController.swift in Sources */,
 				8A4191201CB102F200EED124 /* TelPhoneCodeViewController.swift in Sources */,
 				8AA6AF711C9474BB0028AED3 /* JTCalendarDayView.m in Sources */,

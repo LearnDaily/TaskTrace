@@ -17,7 +17,7 @@ enum Router :URLRequestConvertible{
     case AddTask([String:AnyObject])
     case GetTasks(start:Int,size:Int)
     case addContacts([String:AnyObject])
-
+    case GetContacts([String:AnyObject]);
     static var token: String?
     
     
@@ -32,6 +32,8 @@ enum Router :URLRequestConvertible{
         case .AddTask:
             return .POST
         case .addContacts:
+            return .POST
+        case GetContacts:
             return .POST
         default:
             return .GET
@@ -50,8 +52,9 @@ enum Router :URLRequestConvertible{
             return RequestApi.signup()
         case .AddTask(_):
             return RequestApi.addTask()
-        case .addContacts(_):
-            return RequestApi.addContacts()
+        case .addContacts,GetContacts:
+            return RequestApi.contacts()
+    
         default:
             return ""
         }
@@ -84,6 +87,8 @@ enum Router :URLRequestConvertible{
                 return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: parameters).0
         case .addContacts(let parameters):
                 return  Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: parameters).0
+        case .GetContacts(let parameters):
+             return  Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: parameters).0
 
         default:
             return mutableURLRequest

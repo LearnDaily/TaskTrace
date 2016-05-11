@@ -23,3 +23,34 @@ let RESPONSE_ERROR = "error"
 class LingdaiConstants: NSObject {
 
 }
+
+
+
+func getFistLetter(str: String)-> String{
+    //转换成可变数据
+    var mutableUserAgent = NSMutableString(string: str) as CFMutableString
+    //let transform = kCFStringTransformMandarinLatin//NSString(string: "Any-Latin; Latin-ASCII; [:^ASCII:] Remove") as CFString
+    //取得带音调拼音
+    if CFStringTransform(mutableUserAgent, nil,kCFStringTransformMandarinLatin, false) == true{
+        //取得不带音调拼音
+        if CFStringTransform(mutableUserAgent,nil,kCFStringTransformStripDiacritics,false) == true{
+            
+            let str1 = mutableUserAgent as String
+            
+            let startIndex = str1.startIndex.advancedBy(0) //swift 2.0+
+            let endIndex = str1.endIndex.advancedBy(-str1.length+1) //swift 2.0+
+            
+            var range = Range<String.Index>(start: startIndex,end: endIndex)
+            
+            
+            let s = str1.capitalizedString.substringWithRange(range)
+            
+            
+            return s
+        }else{
+            return str
+        }
+    }else{
+        return str
+    }
+}

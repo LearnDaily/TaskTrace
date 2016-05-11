@@ -37,37 +37,56 @@ class MyTaskTableViewController: BaseTableViewController {
     func loadData(start:Int,size:Int){
        
         weak var weakSelf = self
-//        taskManager.findAll { (tasks) -> Void in
-//            rootTask = tasks
-//            weakSelf?.tableView.reloadData()
-//            weakSelf?.reloadTaskIfNeed = false
+        taskManager.findAll { (tasks) -> Void in
+            rootTask = tasks
+            weakSelf?.tableView.reloadData()
+            weakSelf?.reloadTaskIfNeed = false
+        }
+//        
+//        if isLoading == true{
+//            return
 //        }
-        
-        if isLoading == true{
-            return
-        }
-        isLoading = true
-        Alamofire.request(Router.GetTasks(start: start, size: size)) .responseJSON { response in
-           
-            weakSelf?.isLoading = false
-            print("response \(response.result.value)")
-            
-            if response.result.isFailure {
-                
-            }
-            
-            let value = JSON(response.result.value!).dictionaryValue
-            
-            var responseData = ServiceParser.parseRequestData(value)
-            
-            if responseData.response == RESPONSE_ERROR{
-                return
-            }
-            
-            
-            
-        
-        }
+//        isLoading = true
+//        Alamofire.request(Router.GetTasks(start: start, size: size)) .responseJSON { response in
+//           
+//            weakSelf?.isLoading = false
+//            print("response \(response.result.value)")
+//            
+//            if response.result.isFailure {
+//                
+//            }
+//            
+//            let value = JSON(response.result.value!).dictionaryValue
+//            
+//            var responseData = ServiceParser.parseRequestData(value)
+//            
+//            if responseData.response == RESPONSE_ERROR || responseData.data == nil{
+//                return
+//            }
+//            
+//            var array = responseData.data!["tasks"]?.arrayValue
+//            
+//           
+//            
+//            if  let taskArray = array {
+//                
+//                for item in taskArray {
+//                    
+//                  
+//                    rootTask.append( TaskModel(json: item))
+//                    
+//                }
+//
+//            }
+//            
+//            
+//            
+//            
+//            
+//            
+//            
+//        
+//        }
     }
     
     func taskChanged(notification: NSNotification){

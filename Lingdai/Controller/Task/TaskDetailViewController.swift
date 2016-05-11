@@ -15,10 +15,13 @@ class TaskDetailViewController: UIViewController {
     var tableView:BaseTableView!
     var task:TaskModel = TaskModel()
     var subTask:TaskModel?
+    var briefModel = TaskBriefModel()
     
+    
+
+    let SECTION_ID_BASE = 0
     let SECTION_ID_SUBTASK = 1
     let SECTION_ID_FEED = 2
-    let SECTION_ID_BASE = 0
     let SECTION_TASK_STATUS = 3
     
     override func viewDidLoad() {
@@ -29,6 +32,8 @@ class TaskDetailViewController: UIViewController {
         tabBarController?.tabBar.hidden = true
         view.backgroundColor = UIColor(r: 239, g: 239, b: 239)
         
+        setupData()
+    //    getSubscribedUsers()
         tableView = BaseTableView(frame: CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT), style: .Grouped)
         tableView.separatorStyle = .SingleLine
         tableView.backgroundColor = UIColor(r: 239, g: 239, b: 239)
@@ -45,18 +50,149 @@ class TaskDetailViewController: UIViewController {
         textInputBar.removeFromSuperview()
     }
     
+    func setupData(){
+        briefModel.deadline = "2016-10-20"
+        briefModel.parentTask = "Root"
+        briefModel.title = "违反吩咐第三点发sdfdf 菲菲第三点菲菲风水电费第三方地方风发斯蒂芬斯蒂芬氛围氛围范文芳水电费水电费水电费蜂窝肺防守打法范围范围防守打法"
+        briefModel.assignerName = "Boss"
+        briefModel.postTime = "2016-03-11"
+    }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    
+    //22 134 200
+    func createDelSectionView(leftTitle:String,rightTtitle:String,action:Selector?)->UIView?{
+        
+        let sectionView = UIView(frame: CGRectMake(0,0,SCREEN_WIDTH,20))
+        let delButton = UIButton()
+        sectionView.addSubview(delButton)
+        delButton.titleLabel?.font =  UIFont.systemFontOfSize(13)
+        delButton.setTitleColor(UIColor(r: 22, g: 134, b: 200), forState: UIControlState.Normal)
+        delButton.translatesAutoresizingMaskIntoConstraints = false
+        delButton.setTitle(rightTtitle, forState: UIControlState.Normal)
+        
+        if let act = action{
+            delButton.addTarget(self, action: act, forControlEvents: UIControlEvents.TouchUpInside)
+        }
+        else {
+            delButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
+        }
+        
+        
+        
+        let btnTopConstraint =  NSLayoutConstraint(item: delButton, attribute: .Top, relatedBy: .Equal, toItem: sectionView, attribute: .Top, multiplier: 1, constant: 4)
+        
+        let btnButtomConstraint =  NSLayoutConstraint(item: delButton, attribute: .Bottom, relatedBy: .Equal, toItem: sectionView, attribute: .Bottom, multiplier: 1, constant: -6)
+        
+        let btnRightConstraint = NSLayoutConstraint(item: delButton, attribute: .Right, relatedBy: .Equal, toItem: sectionView, attribute: .Right, multiplier: 1, constant: -10)
+        
+        NSLayoutConstraint.activateConstraints([btnTopConstraint,btnButtomConstraint,btnRightConstraint])
+        
+        
+        
+        
+        let titleLabel = UILabel()
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.font = UIFont.systemFontOfSize(13)
+        titleLabel.textColor = UIColor.Gray(100)
+        sectionView.addSubview(titleLabel)
+        titleLabel.text = leftTitle
+        let labelTopConstraint =  NSLayoutConstraint(item: titleLabel, attribute: .Top, relatedBy: .Equal, toItem: sectionView, attribute: .Top, multiplier: 1, constant: 4)
+        
+        let labelButtomConstraint =  NSLayoutConstraint(item: titleLabel, attribute: .Bottom, relatedBy: .Equal, toItem: sectionView, attribute: .Bottom, multiplier: 1, constant: -6)
+        
+        let labelLeftConstraint = NSLayoutConstraint(item: titleLabel, attribute: .Left, relatedBy: .Equal, toItem: sectionView, attribute: .Left, multiplier: 1, constant: 10)
+        
+        NSLayoutConstraint.activateConstraints([labelButtomConstraint,labelLeftConstraint,labelTopConstraint])
+        
+        
+        
+        return sectionView
+        
+        
+    }
+    
+    func checkStatus(){
+        self.navigationController?.pushViewController(TaskStatusTableViewController(), animated: true)
+    }
+    
+    
+
+    
+    func createSubTaskHeader() ->UIView?{
+        //        if UserModel.sharedInstance.belongTo(compareTo: task.assignees) == true{
+        //            return createDelSectionView("任务细分",rightTtitle: "分解任务",action: #selector(TaskDetailTableViewController.assignTask(_:)))
+        //        }
+        //        else {
+        //            return createDelSectionView("任务细分",rightTtitle: "分解任务",action: nil)
+        //        }
+        
+        return createDelSectionView("任务细分",rightTtitle: "分解任务",action: #selector(TaskDetailViewController.assignTask))
+    }
+    
+    func createFeedsHeader() ->UIView?{
+        return createDelSectionView("动态",rightTtitle: "写留言",action: #selector(TaskDetailViewController.comment))
+    }
+    
+    func comment(sender:AnyObject){
+        //configureInputBar()
+    }
+    
+    func assignTask(){
+        
+        self.subTask = nil
+        let vc = DecomposeTaskTableViewController.getInstance()
+        vc.parentTaskId = task.id
+        vc.delegate = self
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
+
     
 }
+
+
+extension TaskDetailViewController:DeriveSubTask{
+    func deriveSubTask(backedTask: TaskModel) {
+        
+        
+        
+        //backedTask.parentTask = self.task.id
+        
+        var isOldTask = false
+        var index = -1;
+        
+        for task in self.task.children {
+            index++
+            if task.id == backedTask.id
+            {
+                isOldTask = true
+                
+                break;
+            }
+        }
+        
+        
+        if(isOldTask == true){
+            task.removeSubTaskAt(index)
+            task.addSubTask(backedTask,index: index)
+            
+            print("deriveSubTask->old title: \(backedTask.title), deadline: \(backedTask.deadline), assignee: \(backedTask.assignees.first?.name)")
+        }
+        else{
+            self.task.addSubTask(backedTask)
+            TaskDBManager.sharedInstance.updateTask(task.id, subTasks: task.children as! [TaskModel])
+            print("deriveSubTask->new title: \(backedTask.title), deadline: \(backedTask.deadline), assignee: \(backedTask.assignees.first?.name)")
+        }
+        
+        
+        
+        
+        self.tableView.reloadData()
+    }
+    
+    
+}
+
 extension TaskDetailViewController:UITableViewDelegate,UITableViewDataSource{
     
     
@@ -118,75 +254,6 @@ extension TaskDetailViewController:UITableViewDelegate,UITableViewDataSource{
         
         
     }
-    //22 134 200
-    func createDelSectionView(leftTitle:String,rightTtitle:String,action:Selector?)->UIView?{
-        
-        let sectionView = UIView(frame: CGRectMake(0,0,SCREEN_WIDTH,20))
-        let delButton = UIButton()
-        sectionView.addSubview(delButton)
-        delButton.titleLabel?.font =  UIFont.systemFontOfSize(13)
-        delButton.setTitleColor(UIColor(r: 22, g: 134, b: 200), forState: UIControlState.Normal)
-        delButton.translatesAutoresizingMaskIntoConstraints = false
-        delButton.setTitle(rightTtitle, forState: UIControlState.Normal)
-        
-        if let act = action{
-            delButton.addTarget(self, action: act, forControlEvents: UIControlEvents.TouchUpInside)
-        }
-        else {
-            delButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
-        }
-        
-        
-        
-        let btnTopConstraint =  NSLayoutConstraint(item: delButton, attribute: .Top, relatedBy: .Equal, toItem: sectionView, attribute: .Top, multiplier: 1, constant: 4)
-        
-        let btnButtomConstraint =  NSLayoutConstraint(item: delButton, attribute: .Bottom, relatedBy: .Equal, toItem: sectionView, attribute: .Bottom, multiplier: 1, constant: -6)
-        
-        let btnRightConstraint = NSLayoutConstraint(item: delButton, attribute: .Right, relatedBy: .Equal, toItem: sectionView, attribute: .Right, multiplier: 1, constant: -10)
-        
-        NSLayoutConstraint.activateConstraints([btnTopConstraint,btnButtomConstraint,btnRightConstraint])
-        
-        
-        
-        
-        let titleLabel = UILabel()
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.font = UIFont.systemFontOfSize(13)
-        titleLabel.textColor = UIColor.Gray(100)
-        sectionView.addSubview(titleLabel)
-        titleLabel.text = leftTitle
-        let labelTopConstraint =  NSLayoutConstraint(item: titleLabel, attribute: .Top, relatedBy: .Equal, toItem: sectionView, attribute: .Top, multiplier: 1, constant: 4)
-        
-        let labelButtomConstraint =  NSLayoutConstraint(item: titleLabel, attribute: .Bottom, relatedBy: .Equal, toItem: sectionView, attribute: .Bottom, multiplier: 1, constant: -6)
-        
-        let labelLeftConstraint = NSLayoutConstraint(item: titleLabel, attribute: .Left, relatedBy: .Equal, toItem: sectionView, attribute: .Left, multiplier: 1, constant: 10)
-        
-        NSLayoutConstraint.activateConstraints([labelButtomConstraint,labelLeftConstraint,labelTopConstraint])
-        
-        
-        
-        return sectionView
-        
-        
-    }
-    
-    func createSubTaskHeader() ->UIView?{
-        if UserModel.sharedInstance.belongTo(compareTo: task.assignees) == true{
-            return createDelSectionView("任务细分",rightTtitle: "分解任务",action: #selector(TaskDetailTableViewController.assignTask(_:)))
-        }
-        else {
-            return createDelSectionView("任务细分",rightTtitle: "分解任务",action: nil)
-        }
-        
-    }
-    
-    func createFeedsHeader() ->UIView?{
-        return createDelSectionView("动态",rightTtitle: "写留言",action: #selector(TaskDetailTableViewController.comment(_:)))
-    }
-    
-    func comment(sender:AnyObject){
-        //configureInputBar()
-    }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
@@ -208,27 +275,62 @@ extension TaskDetailViewController:UITableViewDelegate,UITableViewDataSource{
             return 180
         }
         else if(indexPath.section == SECTION_ID_BASE && indexPath.row == 0 ){
-            return 88
+            return TaskBriefTableViewCell.getCellHeight(briefModel)
+        }
+        else if(indexPath.section == SECTION_ID_BASE && indexPath.row == 1 ){
+            return 44
         }
         
         
         return 44
         
     }
+//    
+//    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+//        
+//        //if(indexPath.section == 1)
+//        //{
+//        if editingStyle == .Delete {
+//            
+//            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+//        } else if editingStyle == .Insert {
+//            
+//        }
+//        // }
+//        
+//    }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        
-        //if(indexPath.section == 1)
-        //{
-        if editingStyle == .Delete {
+     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if(indexPath.section == SECTION_ID_SUBTASK){
             
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
+            if task.children.count > 0{
+                subTask = task.children[indexPath.row] as! TaskModel
+                
+                //                if UserModel.sharedInstance.belongTo(compareTo: subTask!.assignees) == true {
+                //                   print("this task belongs to mind")
+                var taskDetail = TaskDetailTableViewController.instance
+                taskDetail.task = subTask!
+                self.navigationController?.pushViewController(taskDetail, animated: true)
+                
+                return
+                //                }
+                //                else{
+                //
+                //                    performSegueWithIdentifier("deriveSubTask", sender: nil)
+                //                }
+                
+                
+            }
+            else {
+                print("no subTask has been derived")
+            }
             
         }
-        // }
-        
+        else if(indexPath.section == SECTION_ID_BASE){
+          
+        }
     }
+    
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
@@ -268,13 +370,11 @@ extension TaskDetailViewController:UITableViewDelegate,UITableViewDataSource{
                 //
                 //                return cell
                 
-                var model = TaskBriefModel()
-                model.deadline = "2016-10-20"
-                model.parentTask = "Root"
-                model.title = "do do do"
+                
+           
                 var cell = TaskBriefTableViewCell.getTaskBriefTableViewCell(tableView)
                 
-                cell.setData(model)
+                cell.setData(briefModel,closure: checkStatus)
                 
                 return cell
             }
@@ -287,13 +387,17 @@ extension TaskDetailViewController:UITableViewDelegate,UITableViewDataSource{
                 //            }
             else if(indexPath.row == 1){
                 
-                //                let cell = tableView.dequeueReusableCellWithIdentifier("nameValueIdentifer", forIndexPath: indexPath) as! NameValueTableViewCell
+            
                 
-                let cell = NameValueTableViewCell.getNameValueCell(tableView)
-                cell.configureCell("查看进度", value: "")
-                cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-                cell.setCellType(NAME_VALUE_CELL_TYPE.Status)
-                cell.setLightColor()
+//                let cell = NameValueTableViewCell.getNameValueCell(tableView)
+//                cell.configureCell("查看状态", value: "")
+//                cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+//                cell.setCellType(NAME_VALUE_CELL_TYPE.Status)
+//                cell.setLightColor()
+//                return cell
+                let identifier = "SubscribedUserTableViewCell"
+                let cell = SubscribedUserTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: identifier)
+                
                 return cell
             }
                 
@@ -385,8 +489,9 @@ extension TaskDetailViewController:UITableViewDelegate,UITableViewDataSource{
         
         
     }
-}
-extension TaskDetailViewController{
+    
+    }
+    extension TaskDetailViewController{
     // This is how we observe the keyboard position
     override var inputAccessoryView: UIView? {
         get {

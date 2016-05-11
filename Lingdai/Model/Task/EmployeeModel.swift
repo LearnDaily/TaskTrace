@@ -34,12 +34,22 @@ class EmployeeModel: NSObject {
         
     }
     
-    convenience init(number:String,name:String) {
+    convenience init(phoneNumber:String,name:String) {
         self.init()
         self.name = name
-        self.number = number
+        self.phoneNumber = phoneNumber
     }
     
+    
+    convenience init(json:JSON){
+        self.init()
+        
+        id = json["id"].stringValue
+        phoneNumber = json["phoneNumber"].stringValue
+        number = json["number"].stringValue
+        name = json["name"].stringValue
+        
+    }
     
     required init(coder aDecoder: NSCoder) {
         super.init()
@@ -89,8 +99,8 @@ class EmployeeModel: NSObject {
 
     
     func isEqual(compareTo employee:EmployeeModel) -> Bool {
-        //如果编号或者电话号码或者工号相等，我们认为是同一个人
-        if employee.id == self.id || employee.phoneNumber == self.phoneNumber || employee.number == self.number {
+        //如果编号或者电话号码，我们认为是同一个人
+        if employee.id == self.id || employee.phoneNumber == self.phoneNumber {
             return true
         }
         else{

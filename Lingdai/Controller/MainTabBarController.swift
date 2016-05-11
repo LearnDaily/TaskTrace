@@ -18,13 +18,7 @@ class MainTabBarController: UITabBarController {
         self.tabBar.tintColor = defaultColor
         setItemsImage()
         
-        //if KeychainWrapper.stringForKey(USER_ACCOUNT) == nil {
-            // KeychainWrapper.setString("88888888", forKey: USER_ACCOUNT)
-            // var me = ContactModel(id: KeychainWrapper.stringForKey(USER_ACCOUNT)!)
-            // ContactsDBManager.instance.addContacts([me])
-        //}
-        
-        
+      askForContactAccess()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("goLogin:"), name: GO_TO_LOGIN, object: nil)
         
         

@@ -10,6 +10,8 @@ import UIKit
 
 class TaskBriefModel: NSObject {
 
+    var assignerName:String!
+    var postTime:String!
     var title:String!
     var parentTask:String!
     var deadline:String!

@@ -97,6 +97,7 @@ class TaskStatusTableViewController: UIViewController,UITableViewDataSource,UITa
     
     
     private func buildDetailButtonsView() {
+        
         let bottomView = UIView(frame: CGRectMake(0, view.height - 50 , view.width, 1))
         bottomView.backgroundColor = UIColor.grayColor()
         bottomView.alpha = 0.1
@@ -105,8 +106,32 @@ class TaskStatusTableViewController: UIViewController,UITableViewDataSource,UITa
         let bottomView1 = UIView(frame: CGRectMake(0, view.height - 49, view.width, 49))
         bottomView1.backgroundColor = UIColor.whiteColor()
         view.addSubview(bottomView1)
+        
+        
+        let btnWidth: CGFloat = 80
+        let btnHeight: CGFloat = 30
+        
+        let publishBtn = UIButton(frame: CGRectMake(view.width-btnWidth-10,10,btnWidth,btnHeight))
+        publishBtn.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        publishBtn.titleLabel?.font = UIFont.systemFontOfSize(13)
+        publishBtn.layer.cornerRadius = 5;
+        publishBtn.backgroundColor = themeTextColor
+        publishBtn.setTitle("增加状态", forState: UIControlState.Normal)
+        publishBtn.addTarget(self, action: "publishStatus:", forControlEvents: UIControlEvents.TouchUpInside)
+        bottomView1.addSubview(publishBtn)
+//
+//        let CompleteBtn = UIButton(frame: CGRectMake(50,0,50,49))
+//        CompleteBtn.setTitle("完成", forState: UIControlState.Normal)
+//        CompleteBtn.backgroundColor = UIColor.redColor()
+//        bottomView1.addSubview(CompleteBtn)
+        
+        
     }
+    func publishStatus(sender:AnyObject){
     
+        self.navigationController?.pushViewController(PublishStatusViewController(), animated: true)
+    
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

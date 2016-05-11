@@ -31,7 +31,7 @@ class RequestApi: NSObject {
         return "\(host)/TaskServlet"
     }
     
-    internal class func addContacts()->String{
+    internal class func contacts()->String{
         return "\(host)/ContactServlet"
     }
 
@@ -39,6 +39,8 @@ class RequestApi: NSObject {
         
         return "\(host)/SignupServlet/gettask/\(start)/\(size)"
     }
+    
+    
     
     
 

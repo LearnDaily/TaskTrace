@@ -154,7 +154,7 @@ class TaskDetailTableViewController: BaseTableViewController {
         
     }
     //22 134 200
-    func createDelSectionView(leftTitle:String,rightTtitle:String,action:Selector?)->UIView?{
+    func createSectionView(leftTitle:String,rightTitle:String,action:Selector?)->UIView?{
         
         let sectionView = UIView(frame: CGRectMake(0,0,SCREEN_WIDTH,20))
         let delButton = UIButton()
@@ -162,7 +162,7 @@ class TaskDetailTableViewController: BaseTableViewController {
         delButton.titleLabel?.font =  UIFont.systemFontOfSize(13)
         delButton.setTitleColor(UIColor(r: 22, g: 134, b: 200), forState: UIControlState.Normal)
         delButton.translatesAutoresizingMaskIntoConstraints = false
-        delButton.setTitle(rightTtitle, forState: UIControlState.Normal)
+        delButton.setTitle(rightTitle, forState: UIControlState.Normal)
         
         if let act = action{
                delButton.addTarget(self, action: act, forControlEvents: UIControlEvents.TouchUpInside)
@@ -206,17 +206,19 @@ class TaskDetailTableViewController: BaseTableViewController {
     }
     
     func createSubTaskHeader() ->UIView?{
-        if UserModel.sharedInstance.belongTo(compareTo: task.assignees) == true{
-              return createDelSectionView("任务细分",rightTtitle: "分解任务",action: #selector(TaskDetailTableViewController.assignTask(_:)))
-        }
-        else {
-              return createDelSectionView("任务细分",rightTtitle: "分解任务",action: nil)
-        }
+//        if UserModel.sharedInstance.belongTo(compareTo: task.assignees) == true{
+//              return createDelSectionView("任务细分",rightTtitle: "分解任务",action: #selector(TaskDetailTableViewController.assignTask(_:)))
+//        }
+//        else {
+//              return createDelSectionView("任务细分",rightTtitle: "分解任务",action: nil)
+//        }
+        
+         return createSectionView("任务细分",rightTitle: "分解任务",action: #selector(TaskDetailTableViewController.assignTask))
      
     }
     
     func createFeedsHeader() ->UIView?{
-        return createDelSectionView("动态",rightTtitle: "写留言",action: #selector(TaskDetailTableViewController.comment(_:)))
+        return createSectionView("动态",rightTitle: "写留言",action: #selector(TaskDetailTableViewController.comment))
     }
     
     func comment(sender:AnyObject){
@@ -245,19 +247,19 @@ class TaskDetailTableViewController: BaseTableViewController {
     }
 
     
-    func assignTask(sender:AnyObject){
-        //self.navigationController?.pushViewController(DecomposeTaskTableViewController.getInstance(), animated: true)
+    func assignTask(){
+
         self.subTask = nil
-        
-        var vc = DecomposeTaskTableViewController.getInstance()
+        let vc = DecomposeTaskTableViewController.getInstance()
         vc.parentTaskId = task.id
         vc.delegate = self
         self.navigationController?.pushViewController(vc, animated: true)
 
-       // performSegueWithIdentifier("deriveSubTask", sender: sender)
     }
     
-    
+    func checkStatus(){
+        self.navigationController?.pushViewController(TaskStatusTableViewController(), animated: true)
+    }
     
 
     
@@ -302,9 +304,11 @@ class TaskDetailTableViewController: BaseTableViewController {
                 model.deadline = "2016-10-20"
                 model.parentTask = "Root"
                 model.title = "do do do"
+                model.assignerName = "Boss"
+                model.postTime = "2016-04-20"
                 var cell = TaskBriefTableViewCell.getTaskBriefTableViewCell(tableView)
                 
-                cell.setData(model)
+                cell.setData(model,closure: checkStatus)
                 
                 return cell
             }
@@ -346,7 +350,7 @@ class TaskDetailTableViewController: BaseTableViewController {
                 
 
                 
-                let subTask:TaskModel
+            let subTask:TaskModel
                     
                 let tempTask =  TreeNodeHelper.sharedInstance.findNodeById(rootTask, id: (task.children[indexPath.row] as! TaskModel).id)
                 
@@ -428,7 +432,7 @@ class TaskDetailTableViewController: BaseTableViewController {
             return 180
         }
         else if(indexPath.section == SECTION_ID_BASE && indexPath.row == 0 ){
-            return 88
+            return 176
         }
     
         

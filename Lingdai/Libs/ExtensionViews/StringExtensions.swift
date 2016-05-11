@@ -170,7 +170,20 @@ extension String {
         }
         return true
     }
+    //判断首字母是否为中英文
     
+    var isFirstLetterChineseOrEnglish:Bool{
+        
+        get{
+            let a = self.toNSString.characterAtIndex(0)
+            if a > 0x4e00 && a < 0x9fff || a >= 0x41 && a <= 0x5a || a >= 0x61 && a <= 0x7a {
+                return true
+            } else {
+                return false
+            }
+
+        }
+    }
     
     ///验证身份证
     func validateIdentityCard() ->Bool {

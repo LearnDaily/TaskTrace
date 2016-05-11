@@ -40,6 +40,18 @@ class TaskModel: TreeNode {
  
     }
     
+    convenience init(json:JSON){
+        self.init()
+        title = json["title"].stringValue
+        userId = json["userId"].stringValue
+        postTime = json["postTime"].stringValue
+        deadline = json["deadLine"].stringValue
+        var assigneesString = json["assignee"].arrayValue
+        for item in assigneesString {
+            assignees.append(EmployeeModel(json:item))
+        }
+    }
+    
     func getJson()->[String:AnyObject]{
         
         var parameter:[String:AnyObject] = [String:AnyObject]()

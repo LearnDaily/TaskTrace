@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
@@ -14,7 +13,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.96125315656565657" green="0.96125315656565657" blue="0.96125315656565657" alpha="1" colorSpace="calibratedRGB"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="hUF-Fv-HRv">
-                            <rect key="frame" x="0.0" y="72" width="600" height="1"/>
+                            <rect key="frame" x="0.0" y="116" width="600" height="1"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
@@ -41,7 +40,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="通讯录好友" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5za-q5-Xap">
                                             <rect key="frame" x="60" y="13" width="70" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -57,6 +56,82 @@
                                     <outlet property="iconImageView" destination="uW4-xG-Aaz" id="EZj-XS-8tX"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="newContactTableViewCell" id="P5N-YT-je3" customClass="NewContactTableViewCell" customModule="Lingdai" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P5N-YT-je3" id="B1F-eP-aWG">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="friend" translatesAutoresizingMaskIntoConstraints="NO" id="z2P-1l-FJX" customClass="BaseImageView" customModule="Lingdai" customModuleProvider="target">
+                                            <rect key="frame" x="10" y="7" width="30" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="9uO-Y6-75m"/>
+                                                <constraint firstAttribute="width" constant="30" id="gpL-tB-QUz"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRound">
+                                                    <real key="value" value="4"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18601709039" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jkg-te-VVg">
+                                            <rect key="frame" x="56" y="24" width="73" height="13.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P78-kb-TwU" customClass="BaseButton" customModule="Lingdai" customModuleProvider="target">
+                                            <rect key="frame" x="534" y="9.5" width="50" height="25"/>
+                                            <color key="backgroundColor" red="0.0" green="0.85882352939999995" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="50" id="BlG-Cx-l6k"/>
+                                                <constraint firstAttribute="height" constant="25" id="Fq5-Lr-L3L"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <state key="normal" title="添加">
+                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                    <color key="value" red="0.0" green="0.85882352939999995" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                    <real key="value" value="1"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRound">
+                                                    <real key="value" value="4"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="inviteContact:" destination="P5N-YT-je3" eventType="touchUpInside" id="dSd-MN-EHl"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="通讯录好友" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b9a-ID-GDM">
+                                            <rect key="frame" x="58" y="6" width="60" height="14.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="jkg-te-VVg" secondAttribute="bottom" constant="6" id="DoX-Wr-zrv"/>
+                                        <constraint firstItem="b9a-ID-GDM" firstAttribute="top" secondItem="B1F-eP-aWG" secondAttribute="top" constant="6" id="H38-kF-4fF"/>
+                                        <constraint firstItem="z2P-1l-FJX" firstAttribute="centerY" secondItem="B1F-eP-aWG" secondAttribute="centerY" id="Jzy-Hh-25u"/>
+                                        <constraint firstItem="jkg-te-VVg" firstAttribute="leading" secondItem="z2P-1l-FJX" secondAttribute="trailing" constant="16" id="Nff-Ju-DR6"/>
+                                        <constraint firstItem="b9a-ID-GDM" firstAttribute="leading" secondItem="z2P-1l-FJX" secondAttribute="trailing" constant="18" id="gNX-Yq-Lcu"/>
+                                        <constraint firstItem="P78-kb-TwU" firstAttribute="centerY" secondItem="B1F-eP-aWG" secondAttribute="centerY" id="gyD-ge-hGM"/>
+                                        <constraint firstAttribute="trailing" secondItem="P78-kb-TwU" secondAttribute="trailing" constant="16" id="klX-rq-4Yl"/>
+                                        <constraint firstItem="z2P-1l-FJX" firstAttribute="leading" secondItem="B1F-eP-aWG" secondAttribute="leading" constant="10" id="zd9-k3-EdN"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="contactAvatar" destination="z2P-1l-FJX" id="eu8-6p-3ze"/>
+                                    <outlet property="contactName" destination="b9a-ID-GDM" id="dZO-pD-4P0"/>
+                                    <outlet property="contactPhone" destination="jkg-te-VVg" id="saZ-ca-NT3"/>
+                                    <outlet property="inviteBtn" destination="P78-kb-TwU" id="eqh-8P-Ds5"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <sections/>
                         <connections>
@@ -67,7 +142,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sU9-J7-BK4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="158" y="223"/>
+            <point key="canvasLocation" x="170" y="223"/>
         </scene>
         <!--Invite Friedn View Controller-->
         <scene sceneID="ehx-Cc-cXm">
@@ -114,7 +189,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="K3m-1K-V26" firstAttribute="leading" secondItem="fiW-as-PYW" secondAttribute="leading" id="8od-3O-w8z"/>
                             <constraint firstItem="BUy-RV-Gaa" firstAttribute="centerX" secondItem="fiW-as-PYW" secondAttribute="centerX" id="CEV-dw-OUp"/>

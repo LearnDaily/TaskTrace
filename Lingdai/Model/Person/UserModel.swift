@@ -95,12 +95,14 @@ class UserModel: ContactModel {
     }
     class var isLogin:Bool{
         get{
-            if UserModel.userAccount == NULL || UserModel.userPassword == NULL {
+           // if UserModel.userAccount == NULL || UserModel.userPassword == NULL {
+                
+                
                 NSNotificationCenter.defaultCenter().postNotificationName(GO_TO_LOGIN, object: 1)
                 
                 return false
-            }
-            return true
+//            }
+//            return true
         }
     }
     

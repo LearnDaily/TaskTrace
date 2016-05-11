@@ -7,15 +7,17 @@
 //
 
 import UIKit
+import ContactsUI
+import MessageUI
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        askForContactAccess()
         Router.token = "zhongqihong"
         return true
     }
@@ -41,7 +43,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
+    
+    // MARK: - Contact Access Permission Method
+    
+    
+    
 
 }
+
+func askForContactAccess() {
+    let authorizationStatus = CNContactStore.authorizationStatusForEntityType(CNEntityType.Contacts)
+    var contactStore = CNContactStore()
+    var updateContact = CNContact()
+    switch authorizationStatus {
+    case .Denied, .NotDetermined:
+        contactStore.requestAccessForEntityType(CNEntityType.Contacts, completionHandler: { (access, accessError) -> Void in
+            if !access {
+                if authorizationStatus == CNAuthorizationStatus.Denied {
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        let message = "\(accessError!.localizedDescription)\n\nPlease allow the app to access your contacts through the Settings."
+                        let alertController = UIAlertController(title: "Contacts", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+                        
+                        let dismissAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) { (action) -> Void in
+                        }
+                        
+                        alertController.addAction(dismissAction)
+                        
+                    })
+                }
+            }
+        })
+        break
+    default:
+        break
+    }
+}
+
 

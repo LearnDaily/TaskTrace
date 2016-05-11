@@ -52,13 +52,18 @@ class DecomposeTaskTableViewController: UITableViewController {
         
         tabBarController?.tabBar.hidden = true
         
-        if UserModel.isLogin == false {
-            return
-        }
+//        if UserModel.isLogin == false {
+//            return
+//        }
 
     }
     
     
+    @IBAction func tapAction(sender: AnyObject) {
+        
+        titleLabel.resignFirstResponder()
+        
+    }
     
    
     class func  getInstance() ->DecomposeTaskTableViewController{
@@ -85,34 +90,36 @@ class DecomposeTaskTableViewController: UITableViewController {
             parameters["TASK_OPERATION"] = "ADD_TASK"
             parameters["task"] = task!.getJson()
 
-            weak var weakSelf = self
-            if isLoading == true {
-                return
-            }
+//            weak var weakSelf = self
+//            if isLoading == true {
+//                return
+//            }
+//            
+//            print("parameters:\(parameters)")
+//            isLoading = true
+//            Alamofire.request(Router.AddTask(parameters)) .responseJSON { response in
+//                
+//                weakSelf?.isLoading = false
+//                print("response \(response.result.value)")
+//                
+//                if response.result.isFailure {
+//                }
+//                
+//                weakSelf?.isLoading = false
+//                
+//                NSNotificationCenter.defaultCenter().postNotificationName(TaskDBManager.Notification.TaskChanged, object: weakSelf?.task?.id)
+//            }
             
-            print("parameters:\(parameters)")
-            isLoading = true
-            Alamofire.request(Router.AddTask(parameters)) .responseJSON { response in
+            taskManager.addTask(task!, callback: { (taskId) -> Void in
+                //TaskDBManager.taskChanged(taskId)
                 
-                weakSelf?.isLoading = false
-                print("response \(response.result.value)")
-                
-                if response.result.isFailure {
-                }
-                
-                weakSelf?.isLoading = false
-                
-                NSNotificationCenter.defaultCenter().postNotificationName(TaskDBManager.Notification.TaskChanged, object: weakSelf?.task?.id)
-            }
+                NSNotificationCenter.defaultCenter().postNotificationName(TaskDBManager.Notification.TaskChanged, object: taskId)
+            })
             
             tabBarController?.tabBar.hidden = false
             self.navigationController?.popViewControllerAnimated(true)
             
-//            taskManager.addTask(task!, callback: { (taskId) -> Void in
-//               //TaskDBManager.taskChanged(taskId)
-//                
-//                 NSNotificationCenter.defaultCenter().postNotificationName(TaskDBManager.Notification.TaskChanged, object: taskId)
-//            })
+         
             
             
         }
